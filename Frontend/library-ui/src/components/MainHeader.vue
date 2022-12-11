@@ -1,0 +1,26 @@
+<template>
+  <div class="login"></div>
+
+  <div class="add-book-button">
+    <button v-on:click="displayAddBook">Add Book</button>
+    <button>my library</button>
+  </div>
+
+</template>
+
+<script>
+
+export default {
+    name:"Header",
+    showAddBookForm:false,
+    methods:{
+        displayAddBook(){
+            this.showAddBookForm = !this.showAddBookForm;
+        }
+    }
+}
+</script>
+
+<style>
+
+</style>
