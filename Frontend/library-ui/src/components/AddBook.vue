@@ -24,8 +24,9 @@
                     <select name="genre" v-model="book.condition">
                         <option value="New">New</option>
                         <option value="Like New">Like-New</option>
-                        <option value="Excellent">Excellent</option>
+                        <option value="Amazing">Excellent</option>
                         <option value="Good">Good</option>
+                        <option value="Solid">Solid</option>
                         <option value="Decent">Decent</option>
                         <option value="Okay">Okay</option>
                         <option value="Acceptable">Acceptable</option>
@@ -49,17 +50,26 @@
                 <label for="price">Price:</label>
                 <input type="text" list="price" v-model.number="book.price">
                     <datalist id="price">
-                        <option value=".50"></option>
+                        <option value="$0.25"></option>
+                        <option value="$.50"></option>
                         <option value="$1.00"></option>
-                        <option value="200">$2.00</option>
-                        <option value="300">$3.00</option>
+                        <option value="$2.00"></option>
+                        <option value="$3.00"></option>
                     </datalist>
             </div>
 
             <div class="form-component">
+                <label for="hardcoverOrSoftcover">Hardcover or Softcover:</label>
+                <select id="location" v-model="book.format">
+                    <option value="">--format--</option>
+                    <option value="Hardcover">Hardcover</option>
+                    <option value="Softcover">Softcover</option>
+                </select>
+            </div>
+
+            <div class="form-component">
                 <label for="purchase_date">Purchase date:</label>
-                <input type="date" id="date" name="purchase_date"
-                    value="2022-01-1"
+                <input type="date" v-model="book.purchaseDate" id="date" name="purchase_date"
                     min="2020-01-01" max="2025-12-31">
             </div>
 
@@ -77,14 +87,14 @@
             </div>
 
             <div class="form-component">
-                <textarea name="notes" cols="60" rows="10" v-model="notes"></textarea>
+                <textarea name="notes" cols="60" rows="10" v-model="book.notes"></textarea>
             </div>
 
             <div class="form-component">
                 <input type="checkbox" name="read_status" value="Read" v-model="book.read_status" />
             </div>
 
-            <button v-on:click="addBookToDB()">submit</button>
+            <button v-on:click.prevent="addBookToDB()">submit</button>
         </form>
     </div>
 </template>
@@ -102,6 +112,7 @@ export default {
                 isbn:'',
                 condition:'',
                 price:'',
+                format: '',
                 purchaseLocation:'',
                 purchaseDate:'',
                 readStatus:'',
@@ -119,6 +130,10 @@ export default {
 </script>
 
 <style>
+    .add-book-form{
+        display: flex;
+        justify-content: center;
+    }
     .card-container{
         display: flex;
         flex-direction: column;

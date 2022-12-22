@@ -1,6 +1,5 @@
 <template class="container">
     <div class="book">
-  
       <h1>{{title}}</h1>
       <h2>{{author}}</h2>
       <h4>{{price}}</h4>
@@ -8,8 +7,6 @@
       <h4>{{condition}}</h4>
       <div class="book-cover"><img src="../../test-pictures/beartown-cover.jpg" /></div>
       <p>{{notes}}</p>
-  
-  
     </div>
   </template>
   
@@ -35,9 +32,7 @@
           display: flex;
           flex-direction: row;
           justify-content: space-evenly;
-          
       }
-  
   
       .book{
           justify-content: space-between;

@@ -20,12 +20,13 @@ public class JdbcBooksDao implements BookDao {
     public void addBook(Book book){
         String sql =
                 "insert into books(title, author, genre, isbn, condition, price, " +
-                        "purchase_location, purchase_date, read_status, notes)" +
-                        " Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                        " format, purchase_location, purchase_date, read_status, notes)" +
+                        " Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
-        jdbcTemplate.update(sql, book.getBookTitle(), book.getAuthor(),
+        jdbcTemplate.update(sql, book.getbookTitle(), book.getAuthor(),
                 book.getGenre(), book.getIsbn(),
-                book.getCondition(), book.getPrice(), book.getPurchaseLocation(), book.getPurchaseDate(),
+                book.getCondition(), book.getPrice(),
+                book.getFormat(), book.getPurchaseLocation(), book.getPurchaseDate(),
                 book.isReadStatus(), book.getNotes());
     };
 
@@ -34,7 +35,7 @@ public class JdbcBooksDao implements BookDao {
     public List<Book> getAllBooks() {
         List<Book> results = new ArrayList<>();
 
-        String sql = " SELECT  book_id, title, author, genre, isbn, condition, price, purchase_location, purchase_date, notes, read_status " +
+        String sql = " SELECT  book_id, title, author, genre, isbn, condition, price, format, purchase_location, purchase_date, notes, read_status " +
                 " from books; ";
 
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
@@ -54,7 +55,7 @@ public class JdbcBooksDao implements BookDao {
         Book result = new Book();
 
         String sql =
-                " select title, author, genre, isbn, condition, price, purchase_location, purchase_date, notes, read_status " +
+                " select title, author, genre, isbn, condition, price, format, purchase_location, purchase_date, notes, read_status " +
                 " FROM books " +
                 " Where title = ?; ";
 
@@ -82,6 +83,7 @@ public class JdbcBooksDao implements BookDao {
         result.setGenre(rowSet.getString("genre"));
         result.setCondition(rowSet.getString("condition"));
         result.setPrice(rowSet.getInt("price"));
+        result.setFormat(rowSet.getString("format"));
         result.setPurchaseLocation(rowSet.getString("purchase_location"));
         result.setPurchaseDate(rowSet.getString("purchase_date"));
         result.setNotes(rowSet.getString("notes"));

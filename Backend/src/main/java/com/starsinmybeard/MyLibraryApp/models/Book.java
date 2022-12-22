@@ -8,6 +8,8 @@ public class Book {
     private int isbn;
     private String condition;
     private int price;
+    //Hard or soft-cover
+    private String format;
     private String purchaseLocation;
     private String purchaseDate;
     private boolean readStatus;
@@ -17,7 +19,7 @@ public class Book {
     }
 
     public Book(int bookId, String bookTitle, String author, String genre,
-                int isbn, String condition, int price, String purchaseLocation, String purchaseDate,
+                int isbn, String condition, int price, String format, String purchaseLocation, String purchaseDate,
                 boolean readStatus, String notes) {
         this.bookId = bookId;
         this.bookTitle = bookTitle;
@@ -26,6 +28,7 @@ public class Book {
         this.isbn = isbn;
         this.condition = condition;
         this.price = price;
+        this.format = format;
         this.purchaseLocation = purchaseLocation;
         this.purchaseDate = purchaseDate;
         this.readStatus = readStatus;
@@ -42,7 +45,7 @@ public class Book {
         this.bookId = bookId;
     }
 
-    public String getBookTitle() {
+    public String getbookTitle() {
         return bookTitle;
     }
 
@@ -120,5 +123,13 @@ public class Book {
 
     public void setCondition(String condition) {
         this.condition = condition;
+    }
+
+    public String getFormat() {
+        return format;
+    }
+
+    public void setFormat(String format) {
+        this.format = format;
     }
 }

@@ -6,12 +6,16 @@
     <button>my library</button>
   </div>
 
+  <div class="my-profile">
+    <button v-on:click="this.$router.push('/profile')"></button>
+  </div>
+
 </template>
 
 <script>
 
 export default {
-    name:"Header",
+    name:"MainHeader",
     showAddBookForm:false,
     methods:{
         displayAddBook(){

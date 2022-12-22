@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const http = axios.create({
-    baseURL: "http://localhost:8080"
+    baseURL: "http://localhost:3000"
 });
 
 
@@ -12,6 +12,6 @@ export default {
     },
 
     addBook(book){
-        return http.post('/', book);
+        return http.post('/AddBook', book);
     }
 }

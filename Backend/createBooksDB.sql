@@ -8,6 +8,7 @@ CREATE TABLE books(
 	genre varchar(50),
 	condition varchar(50),
 	price int,
+	format varchar(10),
 	purchase_location varchar(100),
 	purchase_date varchar(30),
 	notes varchar(500),
@@ -15,10 +16,31 @@ CREATE TABLE books(
 	read_status boolean
 );
 
-select * from books;
+CREATE TABLE movies(
+	movie_id serial,
+	title varchar(50),
+	director varchar(50),
+	genre varchar(50),
+	condition varchar(50),
+	price int,
+	format varchar(10),
+	purchase_location varchar(100),
+	purchase_date varchar(30),
+	notes varchar(500),
+	isbn varchar(20),
+	rating int,
+	watch_status boolean
+);
 
-INSERT INTO books(title, author, genre, isbn, condition, price, purchase_location, purchase_date, notes, read_status)
-VALUES ('Beartown', 'Frederik Backman', 'fiction', 1501160761, 'Great', 3, 'Garland County Library', 'July 4', 'Love this book.', TRUE);
+
+
+INSERT INTO books(title, author, genre, isbn, condition, price, format, purchase_location, purchase_date, notes, read_status)
+VALUES ('Beartown', 'Frederik Backman', 'fiction', 1501160761, 'Great', 3, 'Softcover', 'Garland County Library', 'July 4', 'Love this book.', TRUE);
+
+
+
+
+select * from books;
 
 select title, author, genre, condition, price, purchase_location, notes
  FROM books

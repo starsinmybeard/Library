@@ -1,36 +1,33 @@
 <template>
-
   <div class="app">
-    <div id="nav">
-      <header>
-        <ul>
-          <li><router-link v-bind:to="{name: 'home'}">Home</router-link></li>
-          <li><router-link v-bind:to="{name: 'library'}">Library</router-link></li>
-          <li><router-link v-bind:to="{name: 'profile'}">Profile</router-link></li>
-        </ul>
-      </header>
-    </div>
+    <the-header></the-header>
+    <router-view></router-view>
   </div>
-
 </template>
 
+
+
 <script>
-
-
-
+import TheHeader from './components/TheHeader.vue';
 export default {
   name: 'App',
+  components:{
+    TheHeader
+  }
 }
+
 </script>
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap');
 
-  .bookshelf{
-    display: flex;
-    flex-direction: row;
-  }
-
-
+    .app{
+      font-family: 'Coming Soon', cursive;
+      margin-left: 20px;
+      margin-top: 20px;
+      margin-right: 20px;
+      margin-bottom: 20px;
+    }
 </style>
 
 
