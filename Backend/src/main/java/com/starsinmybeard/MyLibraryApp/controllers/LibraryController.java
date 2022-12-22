@@ -3,18 +3,14 @@ import com.starsinmybeard.MyLibraryApp.dao.BookDao;
 import com.starsinmybeard.MyLibraryApp.dao.JdbcBooksDao;
 import com.starsinmybeard.MyLibraryApp.models.Book;
 import org.springframework.web.bind.annotation.*;
-
 import javax.xml.xpath.XPath;
 import java.util.ArrayList;
 import java.util.List;
-
 
 @RestController
 @CrossOrigin
 public class LibraryController {
     private BookDao bookDao;
-
-
     public LibraryController(JdbcBooksDao bookDao){
         this.bookDao = bookDao;
     }
@@ -24,7 +20,6 @@ public class LibraryController {
     public List<Book> getAllBooks(){
         return this.bookDao.getAllBooks();
     };
-
 
 
     @RequestMapping(path = "/AddBook", method = RequestMethod.POST)
@@ -38,6 +33,8 @@ public class LibraryController {
         bookToReturn = bookDao.getBook(title);
         return bookToReturn;
     };
+
+
 
 
 

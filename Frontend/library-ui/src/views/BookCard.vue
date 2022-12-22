@@ -1,13 +1,13 @@
 <template class="container">
   <div class="book">
 
-    <h1>{{title}}</h1>
-    <h2>{{author}}</h2>
-    <h4>{{price}}</h4>
-    <h4>{{purchaseLocation}}</h4>
-    <h4>{{condition}}</h4>
+    <h1>{{book.title}}</h1>
+    <h2>{{book.author}}</h2>
+    <h4>{{book.price}}</h4>
+    <h4>{{book.purchaseLocation}}</h4>
+    <h4>{{book.condition}}</h4>
     <div class="book-cover"><img src="../../test-pictures/beartown-cover.jpg" /></div>
-    <p>{{notes}}</p>
+    <p>{{book.notes}}</p>
 
 
   </div>
@@ -16,16 +16,16 @@
 <script>
 export default {
     name: "book-card-display",
-    data(){
-        return{
-            title: 'Beartown',
-            author: 'Frederik Backman',
-            notes: 'Top tier sports book.',
-            price: 2,
-            purchaseLocation: 'Garland County Library',
-            condition: 'Like-New'
-        }
-    }
+    // data(){
+    //     return{
+    //         title: 'Beartown',
+    //         author: 'Frederik Backman',
+    //         notes: 'Top tier sports book.',
+    //         price: 2,
+    //         purchaseLocation: 'Garland County Library',
+    //         condition: 'Like-New'
+    //     }
+    // }
 
 }
 </script>

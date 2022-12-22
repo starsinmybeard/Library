@@ -5,22 +5,22 @@ public class Book {
     private String bookTitle;
     private String author;
     private String genre;
-    private int isbn;
+    private String isbn;
     private String condition;
     private int price;
     //Hard or soft-cover
     private String format;
     private String purchaseLocation;
     private String purchaseDate;
-    private boolean readStatus;
+    private String readStatus;
     private String notes;
 
     public Book(){
     }
 
     public Book(int bookId, String bookTitle, String author, String genre,
-                int isbn, String condition, int price, String format, String purchaseLocation, String purchaseDate,
-                boolean readStatus, String notes) {
+                String isbn, String condition, int price, String format, String purchaseLocation, String purchaseDate,
+                String readStatus, String notes) {
         this.bookId = bookId;
         this.bookTitle = bookTitle;
         this.author = author;
@@ -69,11 +69,11 @@ public class Book {
         this.genre = genre;
     }
 
-    public int getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(int isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
@@ -101,11 +101,11 @@ public class Book {
         this.purchaseDate = purchaseDate;
     }
 
-    public boolean isReadStatus() {
+    public String getReadStatus() {
         return readStatus;
     }
 
-    public void setReadStatus(boolean readStatus) {
+    public void setReadStatus(String readStatus) {
         this.readStatus = readStatus;
     }
 

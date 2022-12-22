@@ -23,11 +23,12 @@ public class JdbcBooksDao implements BookDao {
                         " format, purchase_location, purchase_date, read_status, notes)" +
                         " Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
+        Boolean readStatusBoolean;
         jdbcTemplate.update(sql, book.getbookTitle(), book.getAuthor(),
                 book.getGenre(), book.getIsbn(),
                 book.getCondition(), book.getPrice(),
                 book.getFormat(), book.getPurchaseLocation(), book.getPurchaseDate(),
-                book.isReadStatus(), book.getNotes());
+                Boolean.parseBoolean(book.getReadStatus()), book.getNotes());
     };
 
     //Returns List of All Books
@@ -70,12 +71,9 @@ public class JdbcBooksDao implements BookDao {
     }
 
 
-
-
-
-
     //Book Mapper
     private Book mapRowToBook(SqlRowSet rowSet) {
+        Boolean read;
         Book result = new Book();
         result.setBookId(rowSet.getInt("book_id"));
         result.setBookTitle(rowSet.getString("title"));
@@ -87,10 +85,15 @@ public class JdbcBooksDao implements BookDao {
         result.setPurchaseLocation(rowSet.getString("purchase_location"));
         result.setPurchaseDate(rowSet.getString("purchase_date"));
         result.setNotes(rowSet.getString("notes"));
-        result.setIsbn(rowSet.getInt("isbn"));
-        result.setReadStatus(rowSet.getBoolean("read_status"));
-
+        result.setIsbn(rowSet.getString("isbn"));
+        result.setReadStatus(String.valueOf(rowSet.getString("read_status")));
+//        String answer = rowSet.getString("read_status");
+//        if(answer.equals("Read")){
+//            read = true;
+//        } else {
+//            read = false;
+//        }
+//        result.setReadStatus(read);
         return result;
     }
-
 }

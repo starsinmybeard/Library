@@ -35,7 +35,7 @@
 
             <div class="form-component">
                 <label for="purchaseLocation">Purchased at:</label>
-                <select id="location">
+                <select id="location" v-model="book.purchaseLocation">
                     <option value="">--place of purchase--</option>
                     <option value="Garland County Library Bookstore">Garland County Library Bookstore</option>
                     <option value="Habitat for Humanity Re-Store">Habitat for Humanity Re-Store</option>
@@ -88,10 +88,6 @@
 
             <div class="form-component">
                 <textarea name="notes" cols="60" rows="10" v-model="book.notes"></textarea>
-            </div>
-
-            <div class="form-component">
-                <input type="checkbox" name="read_status" value="Read" v-model="book.read_status" />
             </div>
 
             <button v-on:click.prevent="addBookToDB()">submit</button>
