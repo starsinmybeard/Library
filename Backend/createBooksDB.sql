@@ -3,12 +3,12 @@ DROP table if exists books;
 
 CREATE TABLE books(
 	book_id serial,
-	title varchar(50),
-	author varchar(50),
-	genre varchar(50),
-	condition varchar(50),
+	title varchar(100),
+	author varchar(100),
+	genre varchar(100),
+	condition varchar(100),
 	price int,
-	format varchar(10),
+	format varchar(100),
 	purchase_location varchar(100),
 	purchase_date varchar(30),
 	notes varchar(500),

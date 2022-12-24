@@ -1,10 +1,35 @@
 <template>
     <div class="header-container">
         <div class="links">
-            <router-link class="link" v-bind:to="{name: 'Library'}"><img src="../assets/book.png"/></router-link>
-            <router-link class="link" v-bind:to="{name: 'Profile'}">Profile Page</router-link>
-            <router-link class="link" v-bind:to="{name: 'BookClub'}">Book Club</router-link>
-            <router-link class="link" v-bind:to="{name: 'AddBook'}">Add Book</router-link>
+
+
+            <div class="link">
+                <div class="img-container">
+                    <router-link v-bind:to="{name: 'Library'}" id="img-container">
+                    <img src="../assets/book.png"/>
+                    </router-link>
+                    <div class="img-desc">
+                        <h5>Library!</h5>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="link">
+                <router-link v-bind:to="{name: 'Profile'}">Profile Page</router-link>
+            </div>
+
+
+            <div class="link">
+                <router-link v-bind:to="{name: 'BookClub'}">Book Club</router-link>
+            </div>
+            
+            
+            <div class="link">
+                <router-link v-bind:to="{name: 'AddBook'}">Add Book</router-link>
+            </div>
+            
         </div>
     </div>
 </template>
@@ -31,7 +56,6 @@ export default {
     }
     .links{
         width: 100%;
-
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
@@ -50,8 +74,31 @@ export default {
         text-decoration: none;
         font-size: 30px;
     }
+
+    .img-container{
+        position: relative;
+        
+    }
+
     img{
         height: 100px;
         width: 100px;
     }
+
+    .img-desc{
+        position: absolute; /* position based on boundery created by nearest relative ancestor */
+        top: 50%;
+        left: 50%;
+        transform: translate(-100%, 25%);
+        background: white;
+        opacity: 0;
+    }
+
+    .img-container:hover .img-desc {
+        opacity: 1;
+    }
+
+
+
+
 </style>

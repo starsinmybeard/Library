@@ -16,6 +16,17 @@
                     <select name="genre" v-model="book.genre">
                         <option value="Fiction">Fiction</option>
                         <option value="Non-Fiction">Non-Fiction</option>
+                        <option value="Classics">Classics</option>
+                        <option value="Humour">Humour</option>
+                        <option value="Sci-Fi">Sci-Fi</option>
+                        <option value="Fantasy">Fantast</option>
+                        <option value="Philosophy">Philosophy</option>
+                        <option value="Biography">Biography</option>
+                        <option value="History">History</option>
+                        <option value="Mystery">Mystery</option>
+                        <option value="Horror">Horror</option>
+                        <option value="Poetry">Poetry</option>
+                        <option value="Science">Science</option>
                     </select>
             </div>
 
@@ -24,7 +35,8 @@
                     <select name="genre" v-model="book.condition">
                         <option value="New">New</option>
                         <option value="Like New">Like-New</option>
-                        <option value="Amazing">Excellent</option>
+                        <option value="Excellent">Excellent</option>
+                        <option value="Great">Great</option>
                         <option value="Good">Good</option>
                         <option value="Solid">Solid</option>
                         <option value="Decent">Decent</option>
@@ -48,13 +60,13 @@
 
             <div class="form-component">
                 <label for="price">Price:</label>
-                <input type="text" list="price" v-model.number="book.price">
+                <input type="text" list="price" v-model.number="priceBeforeCoversion">
                     <datalist id="price">
-                        <option value="$0.25"></option>
-                        <option value="$.50"></option>
-                        <option value="$1.00"></option>
-                        <option value="$2.00"></option>
-                        <option value="$3.00"></option>
+                        <option value=".25">$.25</option>
+                        <option value=".50">$.50</option>
+                        <option value="1.00">$1.00</option>
+                        <option value="2.00">$2.00</option>
+                        <option value="3.00">$3.00</option>
                     </datalist>
             </div>
 
@@ -63,7 +75,7 @@
                 <select id="location" v-model="book.format">
                     <option value="">--format--</option>
                     <option value="Hardcover">Hardcover</option>
-                    <option value="Softcover">Softcover</option>
+                    <option value="Softcover">Paperback</option>
                 </select>
             </div>
 
@@ -82,7 +94,7 @@
                 <label for="read_status">Read status:</label>
                     <select name="read" v-model="book.readStatus">
                         <option value="Read">Read</option>
-                        <option value="Haven't Read Yet">Haven't Read Yet</option>
+                        <option value="Haven't Read Yet">Haven't Read Yet!</option>
                     </select>
             </div>
 
@@ -90,7 +102,7 @@
                 <textarea name="notes" cols="60" rows="10" v-model="book.notes"></textarea>
             </div>
 
-            <button v-on:click.prevent="addBookToDB()">submit</button>
+            <button v-on:click.prevent="convertPrice(), addBookToDB()">submit</button>
         </form>
     </div>
 </template>
@@ -101,6 +113,7 @@ export default {
     name:"add-book",
     data(){
         return{
+            priceBeforeCoversion:"",
             book:{
                 bookTitle: '',
                 author:'',
@@ -119,6 +132,9 @@ export default {
     methods:{ 
         addBookToDB(){
             BookService.addBook(this.book);
+        }, 
+        convertPrice(){
+            this.book.price = this.priceBeforeCoversion * 100;
         }
     }
 }

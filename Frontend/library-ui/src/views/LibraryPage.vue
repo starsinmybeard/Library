@@ -1,9 +1,17 @@
 <template>
-    <div class="book-diplay">
-        <book-card v-for="book in this.$store.state.books" v-bind:key="book.title"></book-card>
+    <div class="book-display">
+        <book-card v-for="book in $store.state.books" 
+         v-bind:key="book.bookId" 
+         :title="book.bookTitle"
+         :author="book.author"
+         :price="book.price"
+         :purchaseLocation="book.purchaseLocation"
+         :condition="book.condition"
+         :notes="book.notes"
+         :isbn="book.isbn" 
+         ></book-card>
     </div>
 </template>
-
 
 
 <script>
@@ -18,7 +26,7 @@ export default {
         getBooksFromDB(){
             BookService.getAllBooks().then((response) => 
             this.$store.commit("GET_BOOKS", response.data))
-        }
+        },
     },
     created(){
         this.getBooksFromDB();
@@ -31,6 +39,9 @@ export default {
 <style>
     .book-display{
         display: flex;
-        font: 15px solid black;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: stretch;
     }
 </style>
