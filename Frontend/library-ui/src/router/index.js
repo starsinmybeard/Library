@@ -4,13 +4,16 @@ import LibraryPage from '../views/LibraryPage.vue';
 import ProfilePage from '../views/ProfilePage.vue';
 import BookClub from "../views/BookClub.vue";
 import AddBook from "../components/AddBook";
+import BookPage from "../views/BookPage.vue";
+
 
 const routes = [
   {path: '/', name: 'Home', component: HomePage},
   {path: '/library', name: 'Library', component: LibraryPage},
   {path: '/profile', name: 'Profile', component: ProfilePage},
   {path: '/BookClub', name: 'BookClub', component: BookClub},
-  {path: '/AddBook', name: 'AddBook', component:AddBook}
+  {path: '/AddBook', name: 'AddBook', component:AddBook},
+  {path: '/Book/:bookId', name: 'Book', component:BookPage}
 ]
 
 const router = createRouter({

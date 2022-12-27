@@ -15,6 +15,10 @@ export default {
         return http.get('/');
     },
 
+    getBook(bookId){
+        return http.get(`/Book/${bookId}`);
+    },
+
     addBook(book){
         return http.post('/AddBook', book);
     },

@@ -27,10 +27,10 @@ public class LibraryController {
             bookDao.addBook(book);
     };
 
-    @RequestMapping(path = "/{title}", method = RequestMethod.GET)
-    public Book getBook(@PathVariable String title) {
+    @RequestMapping(path = "/Book/{bookId}", method = RequestMethod.GET)
+    public Book getBook(@PathVariable int bookId) {
         Book bookToReturn = new Book();
-        bookToReturn = bookDao.getBook(title);
+        bookToReturn = bookDao.getBook(bookId);
         return bookToReturn;
     };
 

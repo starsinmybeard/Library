@@ -52,22 +52,62 @@ public class JdbcBooksDao implements BookDao {
 
     //Returns Book by title
     @Override
-    public Book getBook(String bookTitle) {
+    public Book getBook(int bookId) {
         Book result = new Book();
-
         String sql =
-                " select title, author, genre, isbn, condition, price, format, purchase_location, purchase_date, notes, read_status " +
+                " SELECT book_id, title, author, genre, isbn, condition, price, format, purchase_location, purchase_date, notes, read_status " +
                 " FROM books " +
-                " Where title = ?; ";
+                " WHERE book_id = ?; ";
 
-        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, bookTitle);
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, bookId);
 
         while(rowSet.next()){
             Book book = mapRowToBook(rowSet);
             result = book;
         }
-
         return result;
+    }
+
+
+     //Returns List of Books bought at CG Library
+    @Override
+    public List<Book> boughtFromGarlandCountyLibrary() {
+        List<Book> results = new ArrayList<>();
+        String sql = " SELECT  book_id, title, author, genre, isbn, condition, price, format, purchase_location, purchase_date, notes, read_status " +
+                " from books " +
+                " where purchase_location = 'Garland County Library Bookstore'; ";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
+        while (rowSet.next()){
+            Book book = mapRowToBook(rowSet);
+            results.add(book);
+        }
+        return results;
+    }
+
+    @Override
+    public List<Book> boughtFromEbay() {
+        List<Book> results = new ArrayList<>();
+        String sql = " SELECT  book_id, title, author, genre, isbn, condition, price, format, purchase_location, purchase_date, notes, read_status " +
+                " from books " +
+                " where purchase_location = 'Ebay'; ";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
+        while (rowSet.next()){
+            Book book = mapRowToBook(rowSet);
+            results.add(book);}
+        return results;
+    }
+
+    @Override
+    public List<Book> boughtFromAmazon() {
+        List<Book> results = new ArrayList<>();
+        String sql = " SELECT  book_id, title, author, genre, isbn, condition, price, format, purchase_location, purchase_date, notes, read_status " +
+                " from books " +
+                " where purchase_location = 'Amazon'; ";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
+        while (rowSet.next()){
+            Book book = mapRowToBook(rowSet);
+            results.add(book);}
+        return results;
     }
 
 
@@ -87,13 +127,6 @@ public class JdbcBooksDao implements BookDao {
         result.setNotes(rowSet.getString("notes"));
         result.setIsbn(rowSet.getString("isbn"));
         result.setReadStatus(String.valueOf(rowSet.getString("read_status")));
-//        String answer = rowSet.getString("read_status");
-//        if(answer.equals("Read")){
-//            read = true;
-//        } else {
-//            read = false;
-//        }
-//        result.setReadStatus(read);
         return result;
     }
 }
