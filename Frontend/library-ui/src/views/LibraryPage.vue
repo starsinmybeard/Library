@@ -1,7 +1,7 @@
 <template>
-    <div class="library-container1">
+    <div class="library-container">
         <div class="library-header">
-            <h6>Display Options:</h6>
+            <h3>Display Options:</h3>
             <button v-on:click="selectFullDetails()">Full Details Display</button>
             <button v-on:click="selectCoverDisplay()">Cover Display</button>
         </div>
@@ -17,7 +17,7 @@
         </div>
 
         <div class="full-details-display" v-if="fullDetailsDisplay">
-            <book-card v-for="book in $store.state.books" 
+            <library-column-display v-for="book in $store.state.books" 
                 v-bind:key="book.bookId" 
                 :title="book.bookTitle"
                 :author="book.author"
@@ -25,8 +25,7 @@
                 :purchaseLocation="book.purchaseLocation"
                 :condition="book.condition"
                 :notes="book.notes"
-                :isbn="book.isbn" >
-            </book-card>
+                :isbn="book.isbn"></library-column-display>
         </div>
 
     </div>
@@ -34,9 +33,10 @@
 
 
 <script>
-import BookCard from "../components/BookCard.vue";
+// import BookCard from "../components/BookCard.vue";
 import BookCoverCard from "../components/BookCoverCard.vue";
 import BookService from "../services/BookService.js";
+import LibraryColumnDisplay from "../components/LibraryColumnDisplay.vue";
 export default {
     name: "libraryDisplay",
     data(){
@@ -46,7 +46,7 @@ export default {
         }
     },
     components: {
-        BookCard, BookCoverCard,
+        BookCoverCard, LibraryColumnDisplay
     },
     methods: {
         getBooksFromDB(){
@@ -74,6 +74,20 @@ export default {
 
 
 <style>
+    .library-header{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+        gap: 10px;
+    }
+
+    .library-header > button{
+        font-family: 'Coming Soon', cursive;
+        width: 150px;
+    }
+
     .full-details-display{
         display: flex;
         flex-direction: row;

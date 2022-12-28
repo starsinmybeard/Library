@@ -1,29 +1,32 @@
-<template class="container">
-    <div class="book-details">
-        <div id="title">
-            <h1>{{title}}</h1>
-        </div>
-
-        <div id="author">
-            <h2>By: {{author}}</h2>
-        </div>
-      
+<template>
+    <div class="row">
         <div class="book-cover">
             <img v-bind:src="`https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`" class="cover"/>
         </div>
 
-        <div id="price">
-            <h4>Purchase Price: <br>${{this.correctPrice}}</h4>
+        <div class="title-section">
+                <h1>{{title}}</h1>
+                <h3>by:</h3>
+                <h2>{{author}}</h2>
         </div>
 
-        <div id="purchaseLocation">
-            <h4>Purchased from: <br>{{purchaseLocation}}</h4>
+        <div class="purchase-section">
+            <div id="price">
+                <h4>Purchase Price:</h4>
+                <h1>${{this.correctPrice}}</h1>
+            </div>
+
+            <div id="purchaseLocation">
+                <h4>Purchased from: </h4>
+                <h3>{{purchaseLocation}}</h3>
+            </div>
+
+            <div id="condition">
+                <h4>Condition: <br>{{condition}}</h4>
+            </div>
         </div>
 
-        <div id="condition">
-            <h4>Condition: <br>{{condition}}</h4>
-        </div>
-
+        
         <div id="notes">
             <p>Notes: <br>{{notes}}</p>
         </div>
@@ -61,19 +64,33 @@
   </script>
   
   <style>
-      .container{
+      .row{
           display: flex;
           flex-direction: row;
-          justify-content: space-evenly;
+          width: 100%;
+          background-color: #89abc6;
+          border: 12px gold solid;
           align-items: center;
       }
+
+      .row > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
+        text-align: center;
+      }
+
+      div > .title-section{
+        width: 25%;
+      }
+
   
       .book-details{
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-          background-color: #89abc6;
           width: 25%;
           border: 12px gold solid;
           border-radius: 60px;
@@ -86,5 +103,17 @@
           text-align: center;
           width: 272px;
           height: 412px;
+      }
+
+      div#price h4{
+        margin-bottom: -20px;
+      }
+
+      div#purchaseLocation h4{
+        margin-bottom: -20px;
+      }
+      
+      div#purchaseLocation h3{
+        font-size: 30px;
       }
   </style>

@@ -37,6 +37,7 @@
                         <option value="Like New">Like-New</option>
                         <option value="Excellent">Excellent</option>
                         <option value="Great">Great</option>
+                        <option value="Very-Good">Very-Good</option>
                         <option value="Good">Good</option>
                         <option value="Solid">Solid</option>
                         <option value="Decent">Decent</option>

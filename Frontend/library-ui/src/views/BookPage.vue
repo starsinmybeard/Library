@@ -13,7 +13,7 @@
             <div id="price"> <h4>Purchase Price: ${{displayPrice(this.$store.state.book.price)}}</h4> </div>
             <div id="purchaseLocation"> <h4>Purchased from: {{this.$store.state.book.purchaseLocation}}</h4></div>
             <div id="condition"><h4>Condition: {{this.$store.state.book.condition}}</h4></div>
-            <div id="notes"><p>Notes: <br>{{this.$store.state.book.notes}}</p></div>
+            <div id="notes"><h4>Notes: <br>{{this.$store.state.book.notes}}</h4></div>
         </div>
 
     </div>
@@ -59,18 +59,18 @@
       .book-details{
         display: flex;
         flex-direction: column;
-        align-items: flex-end;
+        
         background-color: #89abc6;
         border: 12px gold solid;
         border-radius: 60px;
         margin-bottom: 5px;
         font-size: 18px;
-        
+        text-align: end;
       }
 
       div > img{
           text-align: center;
-          width: 272px;
-          height: 412px;
+          width: 544px;
+          height: 824px;
       }
   </style>

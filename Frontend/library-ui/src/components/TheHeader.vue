@@ -2,29 +2,25 @@
     <div class="header-container">
         <div class="links">
 
-
-            <div class="link">
+            <div class="link" id="lib">
                 <div class="img-container">
                     <router-link v-bind:to="{name: 'Library'}" id="img-container">
                     <img src="../assets/book.png"/>
-                    </router-link>
                     <div class="img-desc">
-                        <h5>Library!</h5>
+                        <h6>To the Library</h6>
                     </div>
-
+                    </router-link>
+                    
                 </div>
             </div>
-
 
             <div class="link">
                 <router-link v-bind:to="{name: 'Profile'}">Profile Page</router-link>
             </div>
 
-
             <div class="link">
                 <router-link v-bind:to="{name: 'BookClub'}">Book Club</router-link>
             </div>
-            
             
             <div class="link">
                 <router-link v-bind:to="{name: 'AddBook'}">Add Book</router-link>
@@ -77,7 +73,6 @@ export default {
 
     .img-container{
         position: relative;
-        
     }
 
     img{
@@ -87,18 +82,15 @@ export default {
 
     .img-desc{
         position: absolute; /* position based on boundery created by nearest relative ancestor */
-        top: 50%;
-        left: 50%;
-        transform: translate(-100%, 25%);
-        background: white;
+        transform: translate(120%, -125%);
         opacity: 0;
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .img-container:hover .img-desc {
         opacity: 1;
     }
-
-
-
-
 </style>

@@ -1,7 +1,7 @@
 <template class="container">
-    <div class="book">
+    <div>
         <div class="cover">
-            <img v-bind:src="`https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`"/>
+            <img v-bind:src="`https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`" class="book"/>
         </div>
     </div>
   </template>
@@ -23,11 +23,5 @@
           width: 272px;
           height: 412px;
           box-shadow: 2px 2px 10px black;
-      }
-
-      div > img{
-          text-align: center;
-          width: 272px;
-          height: 412px;
       }
   </style>
