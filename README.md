@@ -28,12 +28,12 @@ This is my first personal project since finishing Tech Elevator's software engin
 For this porject, I incorporated the full-stack dev tools I learned in my bootcamp, including :
 
 <li>Java</li>
-  <li>-Postgresql</li>
-  <li>-CSS</li>
-  <li>-HTML</li>
-  <li>-Vue</li>
-  <li>-Springboot</li>
-  <li>-and more!</li>
+  <li>Postgresql</li>
+  <li>CSS</li>
+  <li>HTML</li>
+  <li>Vue</li>
+  <li>Springboot</li>
+  <li>and more!</li>
 
 
 <img width="1437" alt="library-cover-view" src="https://user-images.githubusercontent.com/100177823/209886716-6dc32ab5-ca82-4dda-9115-82f5d258a780.png">
