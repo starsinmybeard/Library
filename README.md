@@ -46,9 +46,6 @@ For this project, I incorporated the full-stack dev tools I learned in my bootca
 
 
 # In progress
-## Users / Authentication 
-
-After getting the basic site up and running, I brought in some code I used in a Brewery Finder App project I worked on in my Tech Elevator Bootcamp. It's the only re-used code (code brought in from somewhere else). 
-
+### Users / Authentication - Profile Page and ability to trade books
 
 I want my friends to be able to use this too, and I want this project to be a means for me and my friends to "check-out" (borrow) books found in our own individual libraries. 
