@@ -26,8 +26,8 @@ This is my first personal project since finishing Tech Elevator's software engin
 ### What I used to build this
 
 For this project, I incorporated the full-stack dev tools I learned in my bootcamp, including :
--Java 
-    -Postgres
+- Java 
+- Postgres
     <li>Postgresql</li>
     <li>CSS</li>
     <li>HTML</li>
