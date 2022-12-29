@@ -8,7 +8,7 @@ Last year, I discovered the holy-grail of used bookstores. The Garland County Li
 From the Garland County website: 
 
 
-><h2> The Friends of the Garland County Library was incorporated in 1976 as an Arkansas non-profit. The group's purpose is to increase library services by:></h2>
+><h2> The Friends of the Garland County Library was incorporated in 1976 as an Arkansas non-profit. The group's purpose is to increase library services by:</h2>
 
 ><ul>
 >  <li>raising funds through the sale of donated books, magazines, and other materials that are available year-round in the library's Book Sale Room</li>
