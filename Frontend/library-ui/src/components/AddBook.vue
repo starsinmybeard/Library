@@ -27,6 +27,8 @@
                         <option value="Horror">Horror</option>
                         <option value="Poetry">Poetry</option>
                         <option value="Science">Science</option>
+                        <option value="Mythology">Mythology</option>
+                        <option value="Anthology">Anthology</option>
                     </select>
             </div>
 
@@ -48,7 +50,8 @@
 
             <div class="form-component">
                 <label for="purchaseLocation">Purchased at:</label>
-                <select id="location" v-model="book.purchaseLocation">
+                <input type="text" list="location" v-model="book.purchaseLocation">
+                <datalist id="location">
                     <option value="">--place of purchase--</option>
                     <option value="Garland County Library Bookstore">Garland County Library Bookstore</option>
                     <option value="Habitat for Humanity Re-Store">Habitat for Humanity Re-Store</option>
@@ -56,18 +59,19 @@
                     <option value="Amazon">Amazon</option>
                     <option value="Barnes & Noble">Barnes & Noble</option>
                     <option value="Gift/Present">Gift/Present</option>
-                </select>
+                    <option value="Bought for School/Class">Bought for School/Class</option>
+                </datalist>
             </div>
 
             <div class="form-component">
                 <label for="price">Price:</label>
                 <input type="text" list="price" v-model.number="priceBeforeCoversion">
                     <datalist id="price">
-                        <option value=".25">$.25</option>
-                        <option value=".50">$.50</option>
-                        <option value="1.00">$1.00</option>
-                        <option value="2.00">$2.00</option>
-                        <option value="3.00">$3.00</option>
+                        <option value=".25">.25</option>
+                        <option value=".50">.50</option>
+                        <option value="1.00">1.00</option>
+                        <option value="2.00">2.00</option>
+                        <option value="3.00">3.00</option>
                     </datalist>
             </div>
 

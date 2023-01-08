@@ -8,7 +8,7 @@
             <div id="title"><h1>{{this.$store.state.book.bookTitle}}</h1></div>
             <div id="author"><h2>By: {{this.$store.state.book.author}}</h2> </div>
             <div id="format"><h2>Format: {{this.$store.state.book.format}}</h2> </div>
-            <div id="genre"><h2>Genre: {{this.$store.state.book.author}}</h2> </div>
+            <div id="genre"><h2>Genre: {{this.$store.state.book.genre}}</h2> </div>
             <div id="date"><h2>Purchase Date: {{this.$store.state.book.purchaseDate}}</h2> </div>
             <div id="price"> <h4>Purchase Price: ${{displayPrice(this.$store.state.book.price)}}</h4> </div>
             <div id="purchaseLocation"> <h4>Purchased from: {{this.$store.state.book.purchaseLocation}}</h4></div>

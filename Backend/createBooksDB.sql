@@ -45,3 +45,16 @@ select * from books;
 select title, author, genre, condition, price, purchase_location, notes
  FROM books
  Where title = 'Beartown';
+ 
+ 
+--  Change ISBN 
+UPDATE books 
+SET isbn = ''
+WHERE book_id = ;
+
+--Change Purchase Location
+UPDATE books 
+SET purchase_location = ''
+WHERE book_id = ;
+
+delete from books where book_id = 27

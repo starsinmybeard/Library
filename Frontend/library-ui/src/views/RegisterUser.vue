@@ -40,6 +40,8 @@
                 <label for="confirmPassword">Confirm Password:</label>
                 <input type="password" id="password" v-model="user.confirmPassword" required>
             </div>
+
+            <button type="submit">Submit</button>
         </form>
 
     </div>
@@ -47,6 +49,7 @@
 </template>
 
 <script>
+
 import ProfileService from "../services/ProfileService.js";
 
 export default {
@@ -59,7 +62,7 @@ export default {
                 userName : "",
                 password : "",
                 confirmPassword : "",
-                role: user
+                role: "user"
             }, 
             registrationErrors: false,
             errorMessage: "",
@@ -67,26 +70,36 @@ export default {
     }, 
 
     methods: {
-        registerUser(user){
-            if(this.user.firstName = ""){
+        registerUser(){
+            if(this.user.firstName == ""){
                 this.registrationErrors = true;
-                this.errorMessage = "Please enter your first name.";
-            } else if(this.user.lastName = ""){
+                this.errorMessage == "Please enter your first name.";
+            } else if(this.user.lastName == ""){
                 this.registrationErrors = true;
-                this.errorMessage = "Please enter your last name.";
+                this.errorMessage == "Please enter your last name.";
             } else if(this.user.confirmPassword != this.user.password){
                 this.registrationErrors = true;
-                this.errorMessage = "passwords do not match.";
+                this.errorMessage == "passwords do not match.";
+            } else {
+                ProfileService.register(this.user).then(
+                    (response) => {
+                        if(response.status == 201) {
+                            this.$router.push({path : "/profile"})
+                        }
+                    })
             }
-
-
-
-            ProfileService.register(user)
+            ProfileService.register(this.user)
         }
     }
 }
 </script>
 
 <style>
+
+    .registration-page{
+        display: flex;
+        flex-direction: column;
+    }
+
 
 </style>
