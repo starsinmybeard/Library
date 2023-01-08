@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <the-header></the-header>
+    <the-header class="header"></the-header>
     <router-view></router-view>
   </div>
 </template>
@@ -27,6 +27,9 @@ export default {
       margin-top: 20px;
       margin-right: 20px;
       margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 </style>
 

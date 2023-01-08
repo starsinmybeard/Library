@@ -73,7 +73,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
     .library-header{
         display: flex;
         flex-direction: row;
@@ -106,5 +106,6 @@ export default {
 
     .cover-card{
         margin-bottom: 20px;
+        margin: 5px;
     }
 </style>

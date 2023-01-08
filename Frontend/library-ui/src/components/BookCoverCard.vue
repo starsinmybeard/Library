@@ -17,11 +17,11 @@
   }
   </script>
   
-  <style>
+  <style scoped>
       .book{
           text-align: center;
-          width: 272px;
-          height: 412px;
+          width: 136px;
+          height: 206px;
           box-shadow: 2px 2px 10px black;
       }
   </style>
