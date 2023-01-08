@@ -4,26 +4,42 @@
 
             <div class="link" id="lib">
                 <div class="img-container">
-                    <router-link v-bind:to="{name: 'Library'}" id="img-container">
-                    <img src="../assets/book.png"/>
-                    <div class="img-desc">
-                        <h6>To the Library</h6>
-                    </div>
+                    <router-link v-bind:to="{name: 'Library'}" class="img-container">
+                    <img src="../assets/library.png" id="library-img"/>
+                    <div class="img-desc" id="library-desc"><h6>View Your Library</h6></div>
                     </router-link>
                     
                 </div>
             </div>
 
             <div class="link">
-                <router-link v-bind:to="{name: 'Profile'}">Profile Page</router-link>
+                <div class="img-container">
+                    <router-link v-bind:to="{name: 'Profile'}" class="img-container">
+                    <img src="../assets/stats.png" id="stats-img"/>
+                    <div class="img-desc" id="stats-desc"><h6>View Your Stats</h6></div>
+                    </router-link>
+                    
+                </div>
             </div>
 
             <div class="link">
-                <router-link v-bind:to="{name: 'BookClub'}">Book Club</router-link>
+                <div class="img-container">
+                    <router-link v-bind:to="{name: 'BookClub'}" class="img-container">
+                    <img src="../assets/friends.png" id="friends-img"/>
+                    <div class="img-desc" id="friends-desc"><h6>View Your Friends</h6></div>
+                    </router-link>
+                    
+                </div>
             </div>
-            
+
+        
             <div class="link">
-                <router-link v-bind:to="{name: 'AddBook'}">Add Book</router-link>
+                <router-link v-bind:to="{name: 'AddBook'}" class="img-container">
+                    <img id="add-book-img" src="../assets/addBook.png"/>
+                    <div class="img-desc">
+                        <h6>Add Book</h6>
+                    </div>
+                </router-link>
             </div>
             
         </div>
@@ -73,6 +89,7 @@ export default {
 
     .img-container{
         position: relative;
+        margin-bottom: -10px;
     }
 
     img{
@@ -80,14 +97,46 @@ export default {
         width: 100px;
     }
 
+    #add-book-img{
+        margin-top: 5px;
+        scale: 80%;
+    }
+
+    #library-img{
+        margin-top: -15px;
+    }
+
+    #stats-img{
+        scale: 80%;
+        margin-bottom: -15px;
+    }
+    #friends-img{
+        scale: 75%;
+        margin-bottom: -5px;
+    }
+
     .img-desc{
         position: absolute; /* position based on boundery created by nearest relative ancestor */
-        transform: translate(120%, -125%);
+        transform: translate(115%, -110%);
         opacity: 0;
         height: 100px;
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-left: -3px;
+        justify-content: center;
+    }
+
+    #library-desc{
+        transform: translate(100%, -100%);
+    }
+
+    #stats-desc{
+        transform: translate(90%, -100%);
+    }
+
+    #friends-desc{
+        transform: translate(90%, -100%);
     }
 
     .img-container:hover .img-desc {

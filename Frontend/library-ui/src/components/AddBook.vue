@@ -5,6 +5,11 @@
                 <label for="title">Book Title:</label>
                 <input type="text" id="title" v-model="book.bookTitle">
             </div>
+
+            <div class="form-component">
+                <label for="subtitle">Subtitle:</label>
+                <input type="text" id="subtitle" v-model="book.subtitle">
+            </div>
     
             <div class="form-component">
                 <label for="author">Author:</label>
@@ -76,6 +81,11 @@
             </div>
 
             <div class="form-component">
+                <label for="coverPrice">Price on Back Cover:</label>
+                <input type="text" list="coverPrice" v-model.number="coverPriceBeforeCoversion">
+            </div>
+
+            <div class="form-component">
                 <label for="hardcoverOrSoftcover">Hardcover or Softcover:</label>
                 <select id="location" v-model="book.format">
                     <option value="">--format--</option>
@@ -104,7 +114,8 @@
             </div>
 
             <div class="form-component">
-                <textarea name="notes" cols="60" rows="10" v-model="book.notes"></textarea>
+                <label for="notes">Notes:</label>
+                <textarea name="notes" cols="60" rows="10" v-model="book.notes" placeholder="add notes here if you wish!"></textarea>
             </div>
 
             <button v-on:click.prevent="convertPrice(), addBookToDB()">submit</button>
@@ -119,13 +130,16 @@ export default {
     data(){
         return{
             priceBeforeCoversion:"",
+            coverPriceBeforeCoversion:"",
             book:{
                 bookTitle: '',
+                subtitle:'',
                 author:'',
                 genre:'',
                 isbn:'',
                 condition:'',
                 price:'',
+                coverPrice:'',
                 format: '',
                 purchaseLocation:'',
                 purchaseDate:'',
@@ -140,6 +154,7 @@ export default {
         }, 
         convertPrice(){
             this.book.price = this.priceBeforeCoversion * 100;
+            this.book.coverPrice = this.coverPriceBeforeConversion * 100;
         }
     }
 }

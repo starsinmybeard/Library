@@ -10,7 +10,8 @@
             <div id="format"><h2>Format: {{this.$store.state.book.format}}</h2> </div>
             <div id="genre"><h2>Genre: {{this.$store.state.book.genre}}</h2> </div>
             <div id="date"><h2>Purchase Date: {{this.$store.state.book.purchaseDate}}</h2> </div>
-            <div id="price"> <h4>Purchase Price: ${{displayPrice(this.$store.state.book.price)}}</h4> </div>
+            <div id="price"> <h4>Purchase Price: ${{this.$store.state.book.price / 100}}</h4> </div>
+            <div id="coverPrice"> <h4>Cover Price: ${{this.$store.state.book.coverPrice / 100}}</h4> </div>
             <div id="purchaseLocation"> <h4>Purchased from: {{this.$store.state.book.purchaseLocation}}</h4></div>
             <div id="condition"><h4>Condition: {{this.$store.state.book.condition}}</h4></div>
             <div id="notes"><h4>Notes: <br>{{this.$store.state.book.notes}}</h4></div>
@@ -23,12 +24,14 @@
 
   <script>
   import BookService from '@/services/BookService';
+  import OpenLibrary from '@/services/OpenLibrary';
   export default {
       name: "book-card-display",
       data(){
         return{
-            correctPrice: 0,
             book:[],
+            openLibraryBook: [],
+            openLibraryAuthor:[],
         }
         
       },
@@ -38,12 +41,18 @@
             this.$store.commit("GET_BOOK", response.data));
             this.book = this.$store.state.book;
         },
-        displayPrice(price){
-            this.correctPrice = (price / 100);
-            return this.correctPrice;}
+        getDetailsFromOpenLibrary(){
+          console.log("line 50");
+          OpenLibrary.getBookInfo(this.book.isbn).then((response) => 
+          this.openLibraryBook = response.data)
+        },
+        getAuthorDetails(){
+          OpenLibrary.getAuthorInfo(this.openLibraryBook.author)
+        }
       }, 
       created(){
         this.getBook();
+        this.getDetailsFromOpenLibrary();
       }, 
   }
   </script>

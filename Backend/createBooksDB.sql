@@ -39,9 +39,10 @@ VALUES ('Beartown', 'Frederik Backman', 'fiction', 1501160761, 'Great', 3, 'Soft
 
 
 
-
+--Get Library
 select * from books;
 
+--Select Via Title
 select title, author, genre, condition, price, purchase_location, notes
  FROM books
  Where title = 'Beartown';
@@ -57,4 +58,9 @@ UPDATE books
 SET purchase_location = ''
 WHERE book_id = ;
 
-delete from books where book_id = 27
+--Delete via book ID
+delete from books where book_id = 27;
+
+--Add column to DB
+ALTER TABLE books
+ADD cover_price int; 

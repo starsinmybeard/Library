@@ -13,7 +13,11 @@
         </div>
 
         <div id="price">
-            <h4>Purchase Price: <br>${{this.correctPrice}}</h4>
+            <h4>Purchase Price: <br>${{this.formattedPurchasePrice}}</h4>
+        </div>
+
+        <div id="coverPrice">
+            <h4>Cover Price: <br>${{this.formattedCoverPrice}}</h4>
         </div>
 
         <div id="purchaseLocation">
@@ -37,7 +41,8 @@
       name: "book-card-display",
       data(){
         return{
-            correctPrice:""
+            formattedPurchasePrice:"",
+            formattedCoverPrice:""
         }
       },
       props:[
@@ -47,15 +52,19 @@
           "purchaseLocation",
           "condition",
           "notes",
-          "isbn"
+          "isbn",
+          "coverPrice"
       ],
       methods:{
-        displayPrice(){
-            this.correctPrice = this.$props.price / 100;
+        displayPurchasePrice(){
+            this.formattedPurchasePrice = this.$props.price / 100;
+        },
+        displayCoverPrice(){
+            this.formattedCoverPrice = this.$props.coverPrice / 100;
         }
       }, 
       created(){
-       this.displayPrice();
+       this.displayPurchasePrice();
       }
   }
   </script>
