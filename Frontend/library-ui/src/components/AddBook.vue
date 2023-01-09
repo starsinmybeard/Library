@@ -70,7 +70,7 @@
 
             <div class="form-component">
                 <label for="price">Price:</label>
-                <input type="text" list="price" v-model.number="priceBeforeCoversion">
+                <input type="text" list="price" v-model.number="priceBeforeConversion">
                     <datalist id="price">
                         <option value=".25">.25</option>
                         <option value=".50">.50</option>
@@ -82,7 +82,7 @@
 
             <div class="form-component">
                 <label for="coverPrice">Price on Back Cover:</label>
-                <input type="text" list="coverPrice" v-model.number="coverPriceBeforeCoversion">
+                <input type="text" list="coverPrice" v-model.number="coverPriceBeforeConversion">
             </div>
 
             <div class="form-component">
@@ -125,12 +125,13 @@
 
 <script>
 import BookService from '@/services/BookService';
+import OpenLibrary from '@/services/OpenLibrary';
 export default {
     name:"add-book",
     data(){
         return{
-            priceBeforeCoversion:"",
-            coverPriceBeforeCoversion:"",
+            priceBeforeConversion:"",
+            coverPriceBeforeConversion:"",
             book:{
                 bookTitle: '',
                 subtitle:'',
@@ -145,18 +146,28 @@ export default {
                 purchaseDate:'',
                 readStatus:'',
                 notes:''
-            }
+            },
+            openLibraryBook: []
         }
     },
     methods:{ 
+        getDetailsFromOpenLibrary(){
+          console.log("line 50");
+          OpenLibrary.getBookInfo(this.book.isbn).then((response) => 
+          this.openLibraryBook = response.data)
+        },
         addBookToDB(){
             BookService.addBook(this.book);
         }, 
         convertPrice(){
-            this.book.price = this.priceBeforeCoversion * 100;
+            this.book.price = this.priceBeforeConversion * 100;
             this.book.coverPrice = this.coverPriceBeforeConversion * 100;
         }
+    }, 
+    created(){
+        
     }
+    
 }
 
 </script>

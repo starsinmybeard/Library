@@ -34,6 +34,37 @@ public class LibraryController {
         return bookToReturn;
     };
 
+    //Get Books Based off Purchase Location
+    //
+    //
+    @RequestMapping(path = "/GarlandCounty", method = RequestMethod.GET)
+    public List<Book> boughtFromGarlandCounty(){
+        return this.bookDao.boughtFromGarlandCounty();
+    };
+
+    @RequestMapping(path = "/Ebay", method = RequestMethod.GET)
+    public List<Book> boughtFromEbay(){
+        return this.bookDao.boughtFromEbay();
+    };
+
+    @RequestMapping(path = "/Amazon", method = RequestMethod.GET)
+    public List<Book> boughtFromAmazon(){
+        return this.bookDao.boughtFromAmazon();
+    };
+
+    @RequestMapping(path = "/freebooks", method = RequestMethod.GET)
+    public List<Book> gotForFree(){
+        return this.bookDao.gotForFree();
+    };
+
+    @RequestMapping(path = "/schoolbooks", method = RequestMethod.GET)
+    public List<Book> boughtForSchool(){
+        return this.bookDao.boughtForSchool();
+    };
+    //
+    //
+    //
+
 
 
 

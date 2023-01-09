@@ -25,5 +25,23 @@ export default {
 
     getBookCover(isbn){
         return bookCoverHTTP.get(`${isbn}-M.jpg`);
-    }
+    },
+
+
+//Filter Books Based off Purchase Location
+    boughtFromGarlandCounty(){
+        return http.get('/GarlandCounty');
+    },
+    boughtFromEbay(){
+        return http.get('/Ebay');
+    },
+    boughtFromAmazon(){
+        return http.get('/Amazon');
+    },
+    gotForFree(){
+        return http.get('/freebooks');
+    },
+    boughtForSchool(){
+        return http.get('/schoolbooks')
+    },
 }

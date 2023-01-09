@@ -4,6 +4,11 @@
             <h3>Display Options:</h3>
             <button v-on:click="selectFullDetails()">Full Details Display</button>
             <button v-on:click="selectCoverDisplay()">Cover Display</button>
+            <h3>Filter Options:</h3>
+            <button v-on:click="filterBooks('GarlandCounty')">Bought from Garland County Library</button>
+            <button v-on:click="filterBooks('Ebay')">Bought from Ebay</button>
+            <button v-on:click="filterBooks('Amazon')">Bought from Amazon</button>
+            
         </div>
 
         <div class="cover-display" v-if="coverDisplay">
@@ -64,7 +69,24 @@ export default {
         goToBook(bookId){
             BookService.getBook(bookId);
             this.$router.push({ name: "Book", params: {bookId} })
+        },
+        filterBooks(option){
+
+            if(option === 'GarlandCounty'){
+                BookService.boughtFromGarlandCounty().then((response) => 
+                this.$store.commit("GET_BOOKS", response.data));
+
+            } else if(option === 'Ebay'){
+                BookService.boughtFromEbay().then((response) => 
+                this.$store.commit("GET_BOOKS", response.data));
+
+            } else if(option === 'Amazon'){
+                BookService.boughtFromAmazon().then((response) => 
+                this.$store.commit("GET_BOOKS", response.data));
+            }
+
         }
+
     },
     created(){
         this.getBooksFromDB();

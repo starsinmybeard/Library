@@ -19,8 +19,8 @@ public class JdbcBooksDao implements BookDao {
     @Override
     public void addBook(Book book){
         String sql =
-                "insert into books(title, subtitle, author, genre, isbn, condition, price, cover_price " +
-                        " format, pages, purchase_location, purchase_date, read_status, notes)" +
+                " insert into books(title, subtitle, author, genre, isbn, condition, price, cover_price, " +
+                        " format, pages, purchase_location, purchase_date, read_status, notes) " +
                         " Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         Boolean readStatusBoolean;
@@ -72,7 +72,7 @@ public class JdbcBooksDao implements BookDao {
 
      //Returns List of Books bought at CG Library
     @Override
-    public List<Book> boughtFromGarlandCountyLibrary() {
+    public List<Book> boughtFromGarlandCounty() {
         List<Book> results = new ArrayList<>();
         String sql = " SELECT  book_id, title, subtitle, author, genre, isbn, condition, price, cover_price, format, pages, purchase_location, purchase_date, notes, read_status " +
                 " from books " +
@@ -88,7 +88,8 @@ public class JdbcBooksDao implements BookDao {
     @Override
     public List<Book> boughtFromEbay() {
         List<Book> results = new ArrayList<>();
-        String sql = " SELECT  book_id, title, subtitle, author, genre, isbn, condition, price, cover_price, format, pages, purchase_location, purchase_date, notes, read_status " +
+        String sql = " SELECT  book_id, title, subtitle, author, genre, isbn, condition, price, cover_price, format, " +
+                " pages, purchase_location, purchase_date, notes, read_status " +
                 " from books " +
                 " where purchase_location = 'Ebay'; ";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
@@ -111,6 +112,31 @@ public class JdbcBooksDao implements BookDao {
         return results;
     }
 
+    @Override
+    public List<Book> gotForFree() {
+        List<Book> results = new ArrayList<>();
+        String sql = " SELECT  book_id, title, subtitle, author, genre, isbn, condition, price, cover_price, format, pages, purchase_location, purchase_date, notes, read_status " +
+                " from books " +
+                " where price = 0; ";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
+        while (rowSet.next()){
+            Book book = mapRowToBook(rowSet);
+            results.add(book);}
+        return results;
+    }
+
+    @Override
+    public List<Book> boughtForSchool() {
+        List<Book> results = new ArrayList<>();
+        String sql = " SELECT  book_id, title, subtitle, author, genre, isbn, condition, price, cover_price, format, pages, purchase_location, purchase_date, notes, read_status " +
+                " from books " +
+                " where purchase_location = 'Bought for School/Class'; ";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
+        while (rowSet.next()){
+            Book book = mapRowToBook(rowSet);
+            results.add(book);}
+        return results;
+    }
 
     //Book Mapper
     private Book mapRowToBook(SqlRowSet rowSet) {

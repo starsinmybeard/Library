@@ -8,9 +8,10 @@ public interface BookDao {
     Book getBook(int bookId);
     public void addBook(Book book);
 
-    //Returns List of Books bought at CG Library
-    List<Book> boughtFromGarlandCountyLibrary();
+    //List of books Based off purchase location
+    List<Book> boughtFromGarlandCounty();
     List<Book> boughtFromEbay();
     List<Book> boughtFromAmazon();
-
+    List<Book> gotForFree();
+    List<Book> boughtForSchool();
 }
