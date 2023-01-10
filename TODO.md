@@ -1,7 +1,9 @@
-# Library / Bookshelf Project
-My Library Visualizer 
+# Project Name
+Project Description
 
-### To Do
--[ ] Work on searchbar and add sql query to 'search each column for LIKE %search bar VARCHAR/string %
+### Column Name
+- [ ] Task title ~3d #type @name yyyy-mm-dd  
+  - [ ] Sub-task or description  
 
-### Completed
+### Completed Column ✓
+- [x] Completed task title  
