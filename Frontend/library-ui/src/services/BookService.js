@@ -47,10 +47,5 @@ export default {
     },
     boughtForSchool(){
         return http.get('/schoolbooks')
-    },
-
-
-    numOfBooks(){
-        return http.get('/numofbooks')
     }
 }

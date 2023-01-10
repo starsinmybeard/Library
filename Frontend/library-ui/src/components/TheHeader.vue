@@ -13,7 +13,7 @@
 
             <div class="link">
                 <div class="img-container">
-                    <router-link v-bind:to="{name: 'Profile'}" class="img-container">
+                    <router-link v-bind:to="{name: 'Stats'}" class="img-container">
                     <img src="../assets/stats.png" id="stats-img"/>
                     <div class="img-desc" id="stats-desc"><h6>View Your Stats</h6></div>
                     </router-link>
@@ -59,6 +59,7 @@ export default {
         width: 100%;
         padding: 15px;
         height: 11%;
+        
     }
     .logo{
         display: flex;

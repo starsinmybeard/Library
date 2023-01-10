@@ -5,9 +5,44 @@
             <button v-on:click="selectFullDetails()">Full Details Display</button>
             <button v-on:click="selectCoverDisplay()">Cover Display</button>
             <h3>Filter Options:</h3>
-            <button v-on:click="filterBooks('GarlandCounty')">Bought from Garland County Library</button>
-            <button v-on:click="filterBooks('Ebay')">Bought from Ebay</button>
-            <button v-on:click="filterBooks('Amazon')">Bought from Amazon</button>
+                <div class="location-filter">
+                    <ul class="location-list">
+                        <li class="location-option">
+                            <label for="Garland County Library Bookstore">
+                                <input type="checkbox" :checked="filterBooks('GarlandCounty')">Garland County Library Bookstore
+                            </label>
+                        </li>
+
+                        <li class="location-option">
+                            <label for="Ebay">
+                                <input type="checkbox" :checked="filterBooks('Ebay')">Ebay
+                            </label>
+                        </li>
+
+                        <li class="location-option">
+                            <label for="Amazon">
+                                <input type="checkbox" :checked="filterBooks('Amazon')">Amazon
+                            </label>
+                        </li>
+
+                        <li class="location-option">
+                            <label for="Barnes & Noble">
+                                <input type="checkbox" :checked="filterBooks('Barnes & Noble')">Barnes & Noble
+                            </label>
+                        </li>
+
+                        <li class="location-option">
+                            <label for="Gift">
+                                <input type="checkbox" :checked="filterBooks('Gift')">Gift
+                            </label>
+                        </li>
+                    </ul>
+                </div>  
+            <div class="searchbar">
+                <label for="search">search books</label>
+                <input type="text" placeholder="search books" name="search">
+                
+            </div>
             
         </div>
 
@@ -96,6 +131,10 @@ export default {
 
 
 <style scoped>
+
+    .library-container{
+        width: 100%;
+    }
     .library-header{
         display: flex;
         flex-direction: row;
@@ -103,6 +142,10 @@ export default {
         align-items: center;
         margin-right: 10px;
         gap: 10px;
+    }
+
+    .location-list{
+        list-style: none;
     }
 
     .library-header > button{

@@ -84,7 +84,7 @@ export default {
                 ProfileService.register(this.user).then(
                     (response) => {
                         if(response.status == 201) {
-                            this.$router.push({path : "/profile"})
+                            this.$router.push({path : "/stats"})
                         }
                     })
             }

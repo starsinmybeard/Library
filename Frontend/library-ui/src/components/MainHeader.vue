@@ -7,7 +7,7 @@
   </div>
 
   <div class="my-profile">
-    <button v-on:click="this.$router.push('/profile')"></button>
+    <button v-on:click="this.$router.push('/stats')"></button>
   </div>
 
 </template>

@@ -64,3 +64,19 @@ delete from books where book_id = 27;
 --Add column to DB
 ALTER TABLE books
 ADD cover_price int; 
+
+
+-- SUM 
+
+
+--COUNT 
+--Get Most Expensive Book
+SELECT * 
+From books
+where price = (SELECT MAX(price) FROM books)
+
+
+SELECT MAX(price) as MostExpensiveBook
+FROM books;
+--Get MIN
+
