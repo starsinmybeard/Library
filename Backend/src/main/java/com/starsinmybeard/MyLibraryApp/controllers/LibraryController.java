@@ -34,6 +34,11 @@ public class LibraryController {
         return bookToReturn;
     };
 
+    @RequestMapping(path = "/Book/{bookId}", method = RequestMethod.PUT)
+    public void updateBook(@RequestBody Book book){
+        bookDao.updateBook(book);
+    };
+
     //Get Books Based off Purchase Location
     //
     //

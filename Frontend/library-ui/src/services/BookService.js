@@ -27,6 +27,10 @@ export default {
         return bookCoverHTTP.get(`${isbn}-M.jpg`);
     },
 
+    editBook(id, book){
+        return http.put(`/Book/${id}`, book);
+    },
+
 
 //Filter Books Based off Purchase Location
     boughtFromGarlandCounty(){
@@ -44,4 +48,9 @@ export default {
     boughtForSchool(){
         return http.get('/schoolbooks')
     },
+
+
+    numOfBooks(){
+        return http.get('/numofbooks')
+    }
 }

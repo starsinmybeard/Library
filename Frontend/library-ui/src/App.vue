@@ -30,6 +30,8 @@ export default {
       display: flex;
       flex-direction: column;
       align-items: center;
+      height: 100%;
+      background: linear-gradient( rgb(255, 255, 255),  rgb(210, 205, 246),rgb(200, 192, 245), rgb(191, 182, 245), rgb(191, 182, 245));
     }
 </style>
 

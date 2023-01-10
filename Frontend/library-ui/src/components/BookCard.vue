@@ -8,10 +8,6 @@
             <h2>By: {{author}}</h2>
         </div>
       
-        <div class="book-cover">
-            <img v-bind:src="`https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`" class="cover"/>
-        </div>
-
         <div id="price">
             <h4>Purchase Price: <br>${{this.formattedPurchasePrice}}</h4>
         </div>

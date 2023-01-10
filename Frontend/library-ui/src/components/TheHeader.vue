@@ -8,7 +8,6 @@
                     <img src="../assets/library.png" id="library-img"/>
                     <div class="img-desc" id="library-desc"><h6>View Your Library</h6></div>
                     </router-link>
-                    
                 </div>
             </div>
 
@@ -52,13 +51,14 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     .header-container{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         width: 100%;
-        padding: 20px;
+        padding: 15px;
+        height: 11%;
     }
     .logo{
         display: flex;

@@ -7,6 +7,7 @@ public interface BookDao {
     List<Book> getAllBooks();
     Book getBook(int bookId);
     public void addBook(Book book);
+    public void updateBook(Book book);
 
     //List of books Based off purchase location
     List<Book> boughtFromGarlandCounty();

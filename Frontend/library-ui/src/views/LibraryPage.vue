@@ -130,4 +130,8 @@ export default {
         margin-bottom: 20px;
         margin: 5px;
     }
+
+    button:hover{
+        cursor: pointer;
+    }
 </style>

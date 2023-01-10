@@ -69,8 +69,42 @@ public class JdbcBooksDao implements BookDao {
         return result;
     }
 
+    //Update / Edit Book
+    //AddsBook
+    @Override
+    public void updateBook(Book book){
+        String sql =
+                " UPDATE books" +
+                        " set title = ?, " +
+                        " subtitle = ?, " +
+                        " author = ?, " +
+                        " genre = ?, " +
+                        " isbn = ?, " +
+                        " condition = ?, " +
+                        " price = ?, " +
+                        " cover_price = ?, " +
+                        " format = ?, " +
+                        " pages = ?, " +
+                        " purchase_location = ?, " +
+                        " purchase_date = ?, " +
+                        " read_status = ?, " +
+                        " notes = ? " +
+                        " WHERE book_id = ?; ";
 
-     //Returns List of Books bought at CG Library
+        Boolean readStatusBoolean;
+        jdbcTemplate.update(sql, book.getBookTitle(), book.getSubtitle(), book.getAuthor(),
+                book.getGenre(), book.getIsbn(),
+                book.getCondition(), book.getPrice(), book.getCoverPrice(),
+                book.getFormat(), book.getPages(), book.getPurchaseLocation(), book.getPurchaseDate(),
+                Boolean.parseBoolean(book.getReadStatus()), book.getNotes(), book.getBookId());
+    };
+
+
+
+
+    //Returns List of Books based of purchase location
+    //
+    //
     @Override
     public List<Book> boughtFromGarlandCounty() {
         List<Book> results = new ArrayList<>();
