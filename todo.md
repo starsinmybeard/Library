@@ -7,6 +7,7 @@
 
 <br />
 <br />
+
 ## Backend
 
 #### Add SQL query to search DB (Like '%varchar%')
@@ -15,6 +16,7 @@
 
 <br />
 <br />
+
 ## Database
 
 #### Add ability to have multiple genres to books
@@ -28,6 +30,7 @@
 
 <br />
 <br />
+
 # LONG TERM - Down the Line work 
   #### Work on adding new users and friends page. 
   #### Trade / request books from friends. 
