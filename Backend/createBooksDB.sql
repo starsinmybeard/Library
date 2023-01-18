@@ -70,13 +70,19 @@ ADD cover_price int;
 
 
 --COUNT 
+SELECT *
+FROM books 
+WHERE cover_price < 100
+
+WHERE (price > 0) AND (price < 100)
+
 --Get Most Expensive Book
 SELECT * 
 From books
 where price = (SELECT MAX(price) FROM books)
 
-
-SELECT MAX(price) as MostExpensiveBook
-FROM books;
 --Get MIN
+SELECT * 
+From books
+where price = (SELECT MIN(price) FROM books WHERE price > 0)
 

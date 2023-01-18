@@ -40,6 +40,8 @@ public class LibraryController {
     };
 
     //Get Books Based off Purchase Location
+    // As of now these calls are obsolete -
+    // Vue is now filtering purchaseLocation when needed on Library Homepage
     //
     //
     @RequestMapping(path = "/GarlandCounty", method = RequestMethod.GET)

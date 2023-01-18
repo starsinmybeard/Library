@@ -9,38 +9,39 @@
                     <ul class="location-list">
                         <li class="location-option">
                             <label for="Garland County Library Bookstore">
-                                <input type="checkbox" :checked="filterBooks('GarlandCounty')">Garland County Library Bookstore
+                                <input type="checkbox" value="Garland County Library Bookstore" v-model="filteredPurchaseLocation">Garland County Library Bookstore
                             </label>
                         </li>
 
                         <li class="location-option">
                             <label for="Ebay">
-                                <input type="checkbox" :checked="filterBooks('Ebay')">Ebay
+                                <input type="checkbox" value="Ebay" v-model="filteredPurchaseLocation">Ebay
                             </label>
                         </li>
 
                         <li class="location-option">
                             <label for="Amazon">
-                                <input type="checkbox" :checked="filterBooks('Amazon')">Amazon
+                                <input type="checkbox" value="Amazon" v-model="filteredPurchaseLocation">Amazon
                             </label>
                         </li>
 
                         <li class="location-option">
                             <label for="Barnes & Noble">
-                                <input type="checkbox" :checked="filterBooks('Barnes & Noble')">Barnes & Noble
+                                <input type="checkbox" v-model="filteredPurchaseLocation" value="Barnes & Noble">Barnes & Noble
                             </label>
                         </li>
 
                         <li class="location-option">
                             <label for="Gift">
-                                <input type="checkbox" :checked="filterBooks('Gift')">Gift
+                                <input type="checkbox" value="Gift" v-model="filteredPurchaseLocation">Gift
                             </label>
                         </li>
                     </ul>
                 </div>  
             <div class="searchbar">
+                <input type="text" placeholder="search books" name="search"  v-model="search" />
                 <label for="search">search books</label>
-                <input type="text" placeholder="search books" name="search">
+                
                 
             </div>
             
@@ -48,7 +49,7 @@
 
         <div class="cover-display" v-if="coverDisplay">
             <book-cover-card 
-                v-for="book in $store.state.books" 
+                v-for="book in filteredBooks" 
                 v-bind:key="book.bookId" 
                 :isbn="book.isbn" 
                 class="cover-card"
@@ -57,7 +58,7 @@
         </div>
 
         <div class="full-details-display" v-if="fullDetailsDisplay">
-            <library-column-display v-for="book in $store.state.books" 
+            <library-column-display v-for="book in filteredBooks" 
                 v-bind:key="book.bookId" 
                 :title="book.bookTitle"
                 :author="book.author"
@@ -81,8 +82,11 @@ export default {
     name: "libraryDisplay",
     data(){
         return{
+            search:'',
             fullDetailsDisplay : false,
-            coverDisplay : true
+            coverDisplay : true,
+            filteredPurchaseLocation : [],
+            filteredList : []
         }
     },
     components: {
@@ -90,6 +94,7 @@ export default {
     },
     methods: {
         getBooksFromDB(){
+            console.log("97");
             BookService.getAllBooks().then((response) => 
             this.$store.commit("GET_BOOKS", response.data))
         },
@@ -105,30 +110,45 @@ export default {
             BookService.getBook(bookId);
             this.$router.push({ name: "Book", params: {bookId} })
         },
-        filterBooks(option){
+        filterBooksByPurchaseLocation(){
 
-            if(option === 'GarlandCounty'){
-                BookService.boughtFromGarlandCounty().then((response) => 
-                this.$store.commit("GET_BOOKS", response.data));
+        },
+        filterBooksByPrice(){
 
-            } else if(option === 'Ebay'){
-                BookService.boughtFromEbay().then((response) => 
-                this.$store.commit("GET_BOOKS", response.data));
+        },
+        filterBooksByCondition(){
 
-            } else if(option === 'Amazon'){
-                BookService.boughtFromAmazon().then((response) => 
-                this.$store.commit("GET_BOOKS", response.data));
-            }
+        },
+        filterBooksByGenre(){
 
-        }
-
+        },
     },
     created(){
         this.getBooksFromDB();
+       
+    },
+    computed:{
+        searchList(){
+            this.filteredList == this.$store.state.books;
+             console.log("Line 133")
+             return this.filteredList.filter((book) => {
+                return book.includes.toLowerCase().includes(this.search.toLowerCase())
+             });
+        },
+        filteredBooks(){
+            console.log("139")
+            const newList = this.$store.state.books;
+            if(this.filteredPurchaseLocation.length <= 0){
+                console.log("Line 141");
+                return newList;
+            } else {
+                console.log("Line 144")
+                return newList.filter(book => book.purchaseLocation.includes(this.filteredPurchaseLocation))
+            }
+        }
     }
 }
 </script>
-
 
 <style scoped>
 
