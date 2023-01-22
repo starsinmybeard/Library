@@ -12,7 +12,7 @@
             <h4>{{this.$store.state.book.bookTitle}}</h4>
           </div>
 
-          <div class="detail" id="subtitle" v-if="(this.$store.state.book.subtitle != null)"> 
+          <div class="detail" id="subtitle" v-if="(this.$store.state.book.subtitle)"> 
             <h5>subtitle:</h5>
             <h4>{{this.$store.state.book.subtitle}}</h4>
           </div>
@@ -33,12 +33,12 @@
           </div>
 
           <div class="detail" id="format">
-            <h5>purchased: </h5>
+            <h5>Date purchased: </h5>
             <h4>{{this.$store.state.book.purchaseDate}}</h4>
           </div>
 
           <div class="detail" id="price">
-            <h5>cover price:</h5>
+            <h5>Purchase price:</h5>
             <h4>${{this.$store.state.book.price / 100}}</h4>
           </div>
 
@@ -52,7 +52,7 @@
             <h4>{{this.$store.state.book.condition}}</h4>
           </div>
 
-          <div class="detail" id="notes" v-if="((this.$store.state.book.notes).length > 1)">
+          <div class="detail" id="notes" v-if="((this.$store.state.book.notes))">
             <h5>notes:</h5>
             <h6>{{this.$store.state.book.notes}}</h6>
           </div>
@@ -126,40 +126,39 @@
     
     .book-card{
       padding-top: 100px;
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        justify-content: space-evenly;
-        height: 100vh;
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      justify-content: space-evenly;
+      height: 100vh;
     }
       .book-details{
         display: flex;
         flex-direction: column;
-        font-size: 18px;
         align-items: flex-start;
-        width: auto;
-        height: 515px;
         justify-content: center;
+        font-size: 18px;
+        height: auto;
+        width: 400px;
         background-color: rgb(191, 182, 245);
         border: 3px solid purple;
-        margin-left: -200px;
-        padding-right: 10px;
-        margin-bottom: 5px;
         box-shadow: 1px 1px 40px 1px black;
+        
       }
 
       .book-cover{
         height: 520px;
+        
       }
 
       .detail{
         display: flex;
         flex-direction: row;
         align-items: center;
-        height: 50px;
+        height: auto;
         padding-left: 14px;
         background-color: rgb(191, 182, 245);
-        word-wrap: break-word;
+        border: 1px solid yellow;
       }
 
       div > img{
@@ -183,12 +182,14 @@
 
       h4, h5, h6, h3{
         background-color: rgb(191, 182, 245);
+        margin: 10px;
       }
 
       #edit-button{
-        width: 99%;
+        width: 100%;
         display: flex;
         justify-content: center;
+        padding-left: 0px;
       }
 
       button{
