@@ -48,7 +48,7 @@ public class JdbcStatisticsDao implements StatisticsDao {
     }
 
     @Override
-    public int averageCost() {
+    public int averagePrice() {
         String sql =
                 " SELECT AVG(price) " +
                         "    FROM books; ";

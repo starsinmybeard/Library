@@ -35,6 +35,11 @@ public class StatisticsController {
         return this.statisticsDao.moneySaved();
     };
 
+    @RequestMapping(path = "/stats/AveragePrice", method = RequestMethod.GET)
+    public int averagePrice(){
+        return this.statisticsDao.averagePrice();
+    };
+
     @RequestMapping(path = "/stats/AvgPageCount", method = RequestMethod.GET)
     public int avgPageCount(){
         return this.statisticsDao.averagePageCount();

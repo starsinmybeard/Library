@@ -9,6 +9,14 @@ export default {
         return http.get('/BookCount')
     }, 
 
+    hardcoverCount(){
+        return http.get('/HardcoverCount')
+    },
+
+    paperbackCount(){
+        return http.get('/PaperbackCount')
+    },
+
     authorCount(){
         return http.get('/AuthorCount')
     },
@@ -16,6 +24,9 @@ export default {
     moneySpent(){
         return http.get('/MoneySpent')
     },
-    
+
+    averagePrice(){
+        return http.get('/AveragePrice')
+    },
 
 }

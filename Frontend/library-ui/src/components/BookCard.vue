@@ -78,13 +78,15 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-          background-color: #89abc6;
-          width: 25%;
-          border: 12px gold solid;
-          border-radius: 60px;
-          margin-bottom: 5px;
-          font-size: 20px;
-          padding: 25px;
+        background-color: #89abc6;
+        width: 25%;
+        border: 12px gold solid;
+        border-radius: 60px;
+        margin-bottom: 5px;
+        font-size: 20px;
+        padding: 25px;
+        
+          
       }
 
       .cover{

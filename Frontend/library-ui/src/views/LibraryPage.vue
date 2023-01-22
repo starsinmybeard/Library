@@ -39,7 +39,7 @@
                     </ul>
                 </div>  
             <div class="searchbar">
-                <input type="text" placeholder="search books" name="search"  v-model="search" />
+                <input type="text" placeholder="search books" name="search"  v-model="search"/>
                 <label for="search">search books</label>
                 
                 
@@ -137,13 +137,18 @@ export default {
         },
         filteredBooks(){
             console.log("139")
-            const newList = this.$store.state.books;
-            if(this.filteredPurchaseLocation.length <= 0){
+            let newList = this.$store.state.books;
+            if(this.search.length > 0){
+                return newList.filter( book => {
+                    return book.title.toLowerCase.indexOf(this.search.toLowerCase) != -1;
+                })
+            }
+             else if(this.filteredPurchaseLocation.length <= 0){
                 console.log("Line 141");
                 return newList;
             } else {
-                console.log("Line 144")
-                return newList.filter(book => book.purchaseLocation.includes(this.filteredPurchaseLocation))
+                console.log("Line 144");
+                return newList.filter(book => this.filteredPurchaseLocation.includes(book.purchaseLocation));
             }
         }
     }

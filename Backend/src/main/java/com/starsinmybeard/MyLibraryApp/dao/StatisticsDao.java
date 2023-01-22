@@ -8,7 +8,7 @@ public interface StatisticsDao {
     int numberOfBooks();
     int numberOfAuthors();
     int moneySpent();
-    int averageCost();
+    int averagePrice();
     int moneySaved();
     int averagePageCount();
     int hardcoverCount();

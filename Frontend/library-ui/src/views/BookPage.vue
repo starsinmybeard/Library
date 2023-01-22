@@ -159,6 +159,7 @@
         height: 50px;
         padding-left: 14px;
         background-color: rgb(191, 182, 245);
+        word-wrap: break-word;
       }
 
       div > img{
