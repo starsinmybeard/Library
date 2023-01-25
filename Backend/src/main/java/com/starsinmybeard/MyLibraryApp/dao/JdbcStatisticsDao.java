@@ -126,8 +126,8 @@ public class JdbcStatisticsDao implements StatisticsDao {
     }
 
     @Override
-    public List<Book> mostExpensiveBooks(){
-        List<Book> mostExpensive = new ArrayList<>();
+    public Book mostExpensiveBook(){
+        Book mostExpensive = new Book();
         String sql =
                 " SELECT * " +
                 " From books " +
@@ -135,7 +135,7 @@ public class JdbcStatisticsDao implements StatisticsDao {
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
         while (rowSet.next()){
             Book result = mapRowToBook(rowSet);
-            mostExpensive.add(result);
+            mostExpensive = result;
         }
         return mostExpensive;
     }

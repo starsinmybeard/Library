@@ -15,7 +15,52 @@
       <div class="stat">{{ paperbackCount }}</div>
     </div>
 
+    <div class="card">
+      <div class="description"><h4>Average Book Price:</h4></div>
+      <div class="stat">$1{{ averageCost }}</div>
+    </div>
+
+    <div class="card">
+      <div class="description"><h4>Money Saved buying used:</h4></div>
+      <div class="stat">${{ moneySaved }}</div>
+    </div>
+
+    <div class="card">
+      <div class="description"><h4>Most Expensive Book:</h4></div>
+      <div class="stat">{{ mostExpensive }}</div>
+    </div>
+
+    <div class="card">
+      <div class="description"><h4>Number of Paper-Backs:</h4></div>
+      <div class="stat">{{ paperbackCount }}</div>
+    </div>
+
+
+    <div class="card">
+      <div class="description"><h4>Number of Paper-Backs:</h4></div>
+      <div class="stat">{{ paperbackCount }}</div>
+    </div>
+
+
+    <div class="card">
+      <div class="description"><h4>Number of Paper-Backs:</h4></div>
+      <div class="stat">{{ paperbackCount }}</div>
+    </div>
+
+
+    <div class="card">
+      <div class="description"><h4>Number of Paper-Backs:</h4></div>
+      <div class="stat">{{ paperbackCount }}</div>
+    </div>
+
+
+    <div class="card">
+      <div class="description"><h4>Number of Paper-Backs:</h4></div>
+      <div class="stat">{{ paperbackCount }}</div>
+    </div>
+
     
+
     <!-- <div class="profile-body">
         <h4>Stats:</h4>
        <h1>Number of Books: {{ totalBooks }}</h1> 
@@ -26,7 +71,6 @@
        <h1>Total Money saved by buying used: </h1>
     </div> -->
     
-
   </div>
 </template>
 
@@ -46,6 +90,7 @@ export default {
       totalFromAuthor:'',
       totalFromGenre:'',
       daysWithMostBuys:'',
+      mostExpensive: '',
     }
   }, 
   methods:{
@@ -72,6 +117,24 @@ export default {
       })
     },
     
+    totalMoneySaved(){
+      StatsService.moneySaved().then((response) => {
+        this.moneySaved = (response.data / 100 * -1) 
+      })
+    },
+
+    priciestBook(){
+      StatsService.priciestBook().then((response) => {
+        this.mostExpensive = (response.data[0].bookTitle);
+      })
+      
+    },
+     
+    cheapestBook(){
+      StatsService.moneySaved().then((response) => {
+        this.moneySaved = (response.data / 100 * -1) 
+      })
+    },
     
 
   }, 
@@ -80,15 +143,18 @@ export default {
     this.totalHardcover();
     this.totalPaperbacks();
     this.averagePrice();
+    this.totalMoneySaved();
+    this.priciestBook();
   }
 }
 </script>
 
 <style>
-
     .container{
       display: flex;
-      flex-direction: row
+      flex-direction: row;
+      height: 100vh;
+      flex-wrap: wrap;
     }
 
     .card{
@@ -98,7 +164,6 @@ export default {
       margin: 10px;
       padding: 20px;
       align-items: center;
-
     }
 
     .description{
@@ -107,14 +172,14 @@ export default {
 
     .stat{
       border: 4px solid black;
-
-
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 140px;
-      width: 100px;
-      font-size: 4em;
+      height: 160px;
+      width: 120px;
+      font-size: 2.6em;
+      padding: 15px;
+      text-align: center;
 
     }
 

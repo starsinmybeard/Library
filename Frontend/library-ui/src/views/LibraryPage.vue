@@ -40,11 +40,8 @@
                 </div>  
             <div class="searchbar">
                 <input type="text" placeholder="search books" name="search"  v-model="search"/>
-                <label for="search">search books</label>
-                
-                
+                <label for="search">search books</label>            
             </div>
-            
         </div>
 
         <div class="cover-display" v-if="coverDisplay">

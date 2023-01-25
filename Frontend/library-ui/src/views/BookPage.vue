@@ -1,15 +1,15 @@
 <template class="container">
-    <div class="book-card">
+    <!-- <div class="book-card">
 
         <div class="book-cover"> 
-            <img v-bind:src="`https://covers.openlibrary.org/b/isbn/${this.$store.state.book.isbn}-L.jpg`"/>
+          <img v-bind:src="`https://covers.openlibrary.org/b/isbn/${this.$store.state.book.isbn}-L.jpg`"/>
         </div>
 
         <div class="book-details">
-
           <div class="detail" id="title"> 
-            <h5>title:</h5>
-            <h4>{{this.$store.state.book.bookTitle}}</h4>
+            <h1 class="book-title">{{ this.$store.state.book.bookTitle }}</h1>
+            <h5>by:</h5>
+            <h2 class="book-author">{{this.$store.state.book.author}}</h2>
           </div>
 
           <div class="detail" id="subtitle" v-if="(this.$store.state.book.subtitle)"> 
@@ -73,6 +73,35 @@
         
         
 
+    </div> -->
+    <div class="stats-page">
+      <div class="cover-side">
+        <img v-bind:src="`https://covers.openlibrary.org/b/isbn/${this.$store.state.book.isbn}-L.jpg`"/>
+      </div>
+
+      <div class="info-side">
+        <div class="stats-card">
+
+          <h1 class="title">
+            {{ this.$store.state.book.bookTitle }}
+          </h1>
+
+          <h2 class="subtitle" v-if="(this.$store.state.book.subtitle)">{{this.$store.state.book.subtitle}}</h2>
+    
+          <h5>by:</h5>
+          <h2 class="book-author">{{this.$store.state.book.author}}</h2>
+
+
+
+        </div>
+        
+      </div>
+
+    </div>
+
+
+    <div class="edit-book" v-if="editBook">
+          <edit-book></edit-book>
     </div>
     
   </template>
@@ -124,31 +153,31 @@
 
   
     
-    .book-card{
+    /* .book-card{
+      width: 100%;
+      height: 100vh;
       padding-top: 100px;
       display: flex;
       flex-direction: row;
-      width: 100%;
       justify-content: space-evenly;
-      height: 100vh;
+      border: 50px solid purple;
     }
+
       .book-details{
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         justify-content: center;
         font-size: 18px;
         height: auto;
         width: 400px;
         background-color: rgb(191, 182, 245);
-        border: 3px solid purple;
+        border: 10px solid blue;
         box-shadow: 1px 1px 40px 1px black;
-        
       }
 
       .book-cover{
         height: 520px;
-        
       }
 
       .detail{
@@ -216,7 +245,95 @@
         border: solid 2px rgb(234, 234, 55);
       }
 
+      #title.detail{
+        display: flex;
+        flex-direction: column;
+        padding-left: 0px;
+        align-items: center;
+      }
 
+      h1{
+        display: block;
+        font-size: 2em;
+        margin-block-start: 0em;
+        margin-block-end: 0em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        font-weight: bold;
+        border: 1px solid red;
+      } */
+
+
+
+      .stats-page{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: row;
+        border: 2px solid black;
+      }
+
+      .stats-page > div {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+
+      .cover-side{
+        border: 2px solid blue;
+      }
+
+      .info-side{
+        border: 2px solid red;
+      }
+
+      .stats-card{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        border: 1px solid yellow;
+
+        box-shadow: 1px 1px 40px 1px black;
+      }
+
+      .title{
+        text-align: center;
+        font-size: 4em;
+        border: 1px solid red;
+
+        display: block;
+        margin-block-start: 0em;
+        margin-block-end: 0em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        font-weight: bold;
+      }
+
+      .subtitle{
+        text-align: center;
+        font-size: 2em;
+        font-style: italic;
+        border: 1px solid white;
+        margin-block-start: 0em;
+        margin-block-end: 0em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        margin-top: 0em;
+      }
+
+      .author{
+
+      }
+
+      div > img{
+        width: 340px;
+        height: 515px;
+        box-shadow: 1px 1px 40px 1px black;
+      }
+
+      
 
 </style>
 

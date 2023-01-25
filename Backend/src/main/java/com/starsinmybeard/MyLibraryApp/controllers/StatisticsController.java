@@ -56,8 +56,8 @@ public class StatisticsController {
     };
 
     @RequestMapping(path = "/stats/Priciest", method = RequestMethod.GET)
-    public List<Book> mostExpensiveBooks() {
-        return this.statisticsDao.mostExpensiveBooks();
+    public Book mostExpensiveBook() {
+        return this.statisticsDao.mostExpensiveBook();
     };
 
     @RequestMapping(path = "/stats/Cheapest", method = RequestMethod.GET)

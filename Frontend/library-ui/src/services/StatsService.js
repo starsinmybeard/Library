@@ -29,4 +29,15 @@ export default {
         return http.get('/AveragePrice')
     },
 
+    moneySaved(){
+        return http.get('/MoneySaved')
+    },
+
+    priciestBook(){
+        return http.get('/Priciest')
+    },
+
+    cheapestBook(){
+        return http.get('/Cheapest')
+    },
 }
