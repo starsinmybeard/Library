@@ -4,6 +4,7 @@
 
 #### Finish search bar styling 
 #### Finish adding all the REST methods from StatsController to the StatsServive
+#### Finish open library api calls to fill backend data (Average Price, Year Published, author facts)
 
 <br />
 <br />
@@ -12,12 +13,14 @@
 
 #### Add SQL query to search DB (Like '%varchar%')
 #### Finish adding all the REST methods from StatsController to the StatsServive on frontend
+#### 
 
 
 <br />
 <br />
 
 ## Database
+
 
 #### Add ability to have multiple genres to books
 #### Add favorited boolean column to books
