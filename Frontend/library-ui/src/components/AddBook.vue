@@ -3,7 +3,7 @@
         <form action="submit">
             <div class="form-component" id="isbn_container">
                 <label for="isbn">isbn:</label>
-                <input type="text" v-model="book.isbn" @keyup="getDetailsFromOpenLibrary">
+                <input type="text" v-model="book.isbn" @keyup="getFromGoogle">
                 <button id="callbutton" @click.prevent="fillForm">auto-fill</button>
             </div>
 
@@ -160,9 +160,10 @@ export default {
                 pageCount:'',
                 edition: '',
                 publishDate:'',
+                publisher:'',
             },
             openLibraryBook: [],
-            googleBookCall: [],
+            googleBook: [],
             authorInfo:[],
         }
     },
@@ -176,10 +177,17 @@ export default {
             console.log(this.book);
             BookService.addBook(this.book);
         }, 
-        fillForm(){
-            console.log(this.book.isbn);
+        getFromGoogle(){
             GoogleBooksService.getBookDetails(this.book.isbn).then((response) => 
-            this.googleBookCall = (response.data.items));
+            this.googleBook = (response.data.items[0].volumeInfo));
+        }
+        ,
+        fillForm(){
+            this.book.bookTitle = this.googleBook.title;
+            this.book.author = this.googleBook.authors[0];
+            console.log(this.book.isbn);
+            console.log(this.googleBook.title);
+            
             // OpenLibrary.getAuthorInfo(this.openLibraryBook.authors.key).then((response) => 
             // this.authorInfo = response.data);
 
