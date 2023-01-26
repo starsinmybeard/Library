@@ -1,6 +1,12 @@
 <template>
     <div class="add-book-form">
         <form action="submit">
+            <div class="form-component" id="isbn_container">
+                <label for="isbn">isbn:</label>
+                <input type="text" v-model="book.isbn" @keyup="getDetailsFromOpenLibrary">
+                <button id="callbutton" @click.prevent="fillForm">auto-fill</button>
+            </div>
+
             <div class="form-component">
                 <label for="title">Book Title:</label>
                 <input type="text" id="title" v-model="book.bookTitle">
@@ -100,16 +106,16 @@
                     min="2020-01-01" max="2025-12-31">
             </div>
 
-            <div class="form-component">
+            <!-- <div class="form-component">
                 <label for="isbn">isbn:</label>
-                <input type="text" v-model="book.isbn">
-            </div>
+                <input type="text" v-model="book.isbn" @keyup="getDetailsFromOpenLibrary">
+            </div> -->
 
             <div class="form-component">
                 <label for="read_status">Read status:</label>
                     <select name="read" v-model="book.readStatus">
                         <option value="Read">Read</option>
-                        <option value="Haven't Read Yet">Haven't Read Yet!</option>
+                        <option value="Haven't Read Yet" >Haven't Read Yet!</option>
                     </select>
             </div>
 
@@ -118,7 +124,11 @@
                 <textarea name="notes" cols="60" rows="10" v-model="book.notes" placeholder="add notes here if you wish!"></textarea>
             </div>
 
-            <button v-on:click.prevent="convertPrice(), addBookToDB()">submit</button>
+            <div class="submit-button">
+                <button v-on:click.prevent="convertPrice(), addBookToDB()">submit</button>
+            </div>
+
+            
         </form>
     </div>
 </template>
@@ -126,6 +136,7 @@
 <script>
 import BookService from '@/services/BookService';
 import OpenLibrary from '@/services/OpenLibrary';
+import GoogleBooksService from '@/services/GoogleBooksService';
 export default {
     name:"add-book",
     data(){
@@ -145,47 +156,72 @@ export default {
                 purchaseLocation:'',
                 purchaseDate:'',
                 readStatus:'',
-                notes:''
+                notes:'',
+                pageCount:'',
+                edition: '',
+                publishDate:'',
             },
-            openLibraryBook: []
+            openLibraryBook: [],
+            googleBookCall: [],
+            authorInfo:[],
         }
     },
     methods:{ 
         getDetailsFromOpenLibrary(){
           console.log("line 50");
           OpenLibrary.getBookInfo(this.book.isbn).then((response) => 
-          this.openLibraryBook = response.data)
+          this.openLibraryBook = response.data);
         },
         addBookToDB(){
+            console.log(this.book);
             BookService.addBook(this.book);
         }, 
+        fillForm(){
+            console.log(this.book.isbn);
+            GoogleBooksService.getBookDetails(this.book.isbn).then((response) => 
+            this.googleBookCall = (response.data.items));
+            // OpenLibrary.getAuthorInfo(this.openLibraryBook.authors.key).then((response) => 
+            // this.authorInfo = response.data);
+
+
+            // this.book.bookTitle = this.openLibraryBook.title;
+            // this.book.author = this.openLibraryBook.author;
+            // this.book.coverPrice
+            // this.book.format
+            // this.book.purchaseLocation
+            // this.book.purchaseDate
+            // this.book.readStatus
+            // this.book.pageCount = this.openLibraryBook.number_of_pages;
+            // this.book.edition = this.openLibraryBook.edition_name;
+            // this.book.publishDate = this.openLibraryBook.publish_date;
+        },
         convertPrice(){
             this.book.price = this.priceBeforeConversion * 100;
             this.book.coverPrice = this.coverPriceBeforeConversion * 100;
         }
     }, 
-    created(){
-        
+    created(){ 
     }
     
 }
 
 </script>
 
-<style>
+<style scoped>
     .add-book-form{
         display: flex;
         justify-content: center;
     }
-    .card-container{
+
+    #isbn_container{
         display: flex;
         flex-direction: column;
+        margin-bottom: 10px;
     }
 
-    .exit-button{
-        display: flex;
-        flex-direction: row;
-        align-content: flex-end;
+    #callbutton{
+        margin-top: 5px;
+        align-self: flex-end;  
     }
 
     div.form-component {
@@ -195,7 +231,27 @@ export default {
         display: block;
     }
 
-    div.form-component > input,
+    button{
+        width:100px;
+        text-align: center;
+        padding: 3px;
+    }
+
+    .submit-button{
+        display: flex;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        justify-content: center;
+        padding: 10px;
+
+    }
+    
+
+
+
+
+
+    /* div.form-component > input,
     div.form-component > select {
         height: 30px;
         width: 300px;
@@ -211,5 +267,5 @@ export default {
     form > input[type="submit"] {
         width: 100px;
         margin-right: 10px;
-    }
+    } */
 </style>

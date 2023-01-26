@@ -136,11 +136,12 @@
           this.openLibraryBook = response.data)
         },
         getAuthorDetails(){
-          OpenLibrary.getAuthorInfo(this.openLibraryBook.author)
+          OpenLibrary.getAuthorInfo(this.book.author)
         }
       }, 
       created(){
         this.getBook();
+        this.getAuthorDetails();
       }, 
   }
   </script>
