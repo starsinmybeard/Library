@@ -88,8 +88,9 @@
 
           <h2 class="subtitle" v-if="(this.$store.state.book.subtitle)">{{this.$store.state.book.subtitle}}</h2>
     
-          <h5>by:</h5>
+          <h4>by:</h4>
           <h2 class="book-author">{{this.$store.state.book.author}}</h2>
+          <h1>cover price</h1> <h3 class="price">{{this.$store.state.book.price /100}}</h3>
 
 
 

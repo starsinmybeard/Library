@@ -79,7 +79,7 @@
             </div>
 
             <div class="form-component">
-                <label for="hardcoverOrSoftcover">Hardcover or Softcover:</label>
+                <label for="hardcoverOrSoftcover">Hardcover or Paperback:</label>
                 <select id="location" v-model="book.format">
                     <option value="">--format--</option>
                     <option value="Hardcover">Hardcover</option>
@@ -259,9 +259,7 @@ export default {
     
 
 
-
-
-
+    
     /* div.form-component > input,
     div.form-component > select {
         height: 30px;
@@ -278,5 +276,5 @@ export default {
     form > input[type="submit"] {
         width: 100px;
         margin-right: 10px;
-    } */
+    }  */
 </style>

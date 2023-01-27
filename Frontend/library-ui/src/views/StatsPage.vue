@@ -6,12 +6,13 @@
     </div>
 
     <div class="card">
-      <div class="description"><h4>Number of Hard-Covers:</h4></div>
+      
+      <div class="description"><h4>Hard-Covers:</h4></div>
       <div class="stat">{{ hardcoverCount }}</div>
     </div>
 
     <div class="card">
-      <div class="description"><h4>Number of Paper-Backs:</h4></div>
+      <div class="description"><h4>Paper-Backs:</h4></div>
       <div class="stat">{{ paperbackCount }}</div>
     </div>
 
@@ -30,11 +31,9 @@
       <div class="stat">${{ moneySaved }}</div>
     </div>
 
-
-
     <div class="card">
       <div class="description"><h4>Most Expensive Book:</h4></div>
-      <div class="stat">{{ mostExpensive }}</div>
+      <div class="stat" id="most_expensive">{{ mostExpensive }}</div>
     </div>
 
     <div class="card">
@@ -44,40 +43,16 @@
 
 
     <div class="card">
-      <div class="description"><h4>Number of Paper-Backs:</h4></div>
-      <div class="stat">{{ paperbackCount }}</div>
+      <div class="description"><h4>Fiction Books:</h4></div>
+      <div class="stat">{{ fictionCount }}</div>
     </div>
 
 
     <div class="card">
-      <div class="description"><h4>Number of Paper-Backs:</h4></div>
-      <div class="stat">{{ paperbackCount }}</div>
+      <div class="description"><h4>Non-Fiction Books:</h4></div>
+      <div class="stat">{{ nonFictionCount }}</div>
     </div>
 
-
-    <div class="card">
-      <div class="description"><h4>Number of Paper-Backs:</h4></div>
-      <div class="stat">{{ paperbackCount }}</div>
-    </div>
-
-
-    <div class="card">
-      <div class="description"><h4>Number of Paper-Backs:</h4></div>
-      <div class="stat">{{ paperbackCount }}</div>
-    </div>
-
-    
-
-    <!-- <div class="profile-body">
-        <h4>Stats:</h4>
-       <h1>Number of Books: {{ totalBooks }}</h1> 
-       <h1>Number of Hard-Covers: {{ hardcoverCount }}</h1>
-       <h1>Number of Paper-Backs: {{ paperbackCount }}</h1>
-       <h1>Number of Authors:</h1>
-       <h1>Average Price of Book: ${{ averageCost }}</h1>
-       <h1>Total Money saved by buying used: </h1>
-    </div> -->
-    
   </div>
 </template>
 
@@ -138,9 +113,8 @@ export default {
 
     priciestBook(){
       StatsService.priciestBook().then((response) => {
-        this.mostExpensive = (response.data[0]);
+        this.mostExpensive = (response.data.bookTitle);
       })
-      
     },
      
     cheapestBook(){
@@ -152,6 +126,18 @@ export default {
     pageCount(){
       StatsService.pageCount().then((response) => {
         this.averagePageCount = (response.data) 
+      })
+    },
+
+    totalFiction(){
+      StatsService.fictionCount().then((response) => {
+        this.fictionCount = (response.data) 
+      })
+    },
+
+    totalNonFiction(){
+      StatsService.nonFictionCount().then((response) => {
+        this.nonFictionCount = (response.data) 
       })
     },
     
@@ -166,6 +152,8 @@ export default {
     this.priciestBook();
     this.totalMoneySpent();
     this.pageCount();
+    this.totalFiction();
+    this.totalNonFiction();
   }
 }
 </script>
@@ -176,19 +164,24 @@ export default {
       flex-direction: row;
       height: 100vh;
       flex-wrap: wrap;
+      justify-content: center;
+      align-content: flex-start;
+      align-items: center;
+      
     }
 
     .card{
       display: flex;
       flex-direction: column;
-      border: 3px solid yellow;
-      margin: 10px;
+      margin: 20px;
       padding: 20px;
       align-items: center;
+      height: 300px;
+      width: 400px;
     }
 
     .description{
-
+      font-size: 1.4em;
     }
 
     .stat{
@@ -201,8 +194,14 @@ export default {
       font-size: 2.6em;
       padding: 15px;
       text-align: center;
-
     }
+
+    #most_expensive{
+      font-size: 2em;
+      overflow: scroll;
+    }
+
+    
 
 
 

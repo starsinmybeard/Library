@@ -44,7 +44,6 @@ public class JdbcStatisticsDao implements StatisticsDao {
                         " FROM books; ";
         int sum = jdbcTemplate.queryForObject(sql, Integer.class);
         return sum;
-
     }
 
     @Override
@@ -154,6 +153,29 @@ public class JdbcStatisticsDao implements StatisticsDao {
         }
         return cheapest;
     }
+
+    @Override
+    public int fictionCount(){
+        String sql =
+                " SELECT COUNT(*) " +
+                        " FROM books " +
+                        " WHERE genre = 'Fiction'; ";
+        int number = jdbcTemplate.queryForObject(sql, Integer.class);
+        return number;
+
+    }
+
+    @Override
+    public int nonFictionCount(){
+        String sql =
+                " SELECT COUNT(*) " +
+                        " FROM books " +
+                        " WHERE genre = 'Non-Fiction'; ";
+        int number = jdbcTemplate.queryForObject(sql, Integer.class);
+        return number;
+    }
+
+
 
 
     private Book mapRowToBook(SqlRowSet rowSet) {

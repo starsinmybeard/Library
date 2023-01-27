@@ -65,8 +65,15 @@ public class StatisticsController {
         return this.statisticsDao.cheapestBooks();
     };
 
+    @RequestMapping(path = "/stats/FictionCount", method = RequestMethod.GET)
+    public int fictionCount() {
+        return this.statisticsDao.fictionCount();
+    };
 
-
+    @RequestMapping(path = "/stats/NonFictionCount", method = RequestMethod.GET)
+    public int nonFictionCount() {
+        return this.statisticsDao.nonFictionCount();
+    };
 
 
 }

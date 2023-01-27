@@ -44,4 +44,12 @@ export default {
     pageCount(){
         return http.get('/AvgPageCount')
     },
+
+    fictionCount(){
+        return http.get('/FictionCount')
+    },
+
+    nonFictionCount(){
+        return http.get('/NonFictionCount')
+    }
 }

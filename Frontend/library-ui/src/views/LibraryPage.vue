@@ -1,22 +1,28 @@
 <template>
     <div class="library-container">
         <div class="library-header">
-            <h3>Display Options:</h3>
-            <button v-on:click="selectFullDetails()">Full Details Display</button>
-            <button v-on:click="selectCoverDisplay()">Cover Display</button>
-            <h3>Filter Options:</h3>
-                <div class="location-filter">
-                    <ul class="location-list">
+            <div class="header-section" id="display-section">
+                <div class="section-name"><h3>Display Options:</h3></div>
+                <div class="section-options">
+                    <button v-on:click="selectFullDetails()">Full Details Display</button>
+                    <button v-on:click="selectCoverDisplay()">Cover Display</button>
+                </div>
+            </div>
+
+            <div class="header-section" id="filter-section">
+                <div class="section-name"><h3>Purchase Loctaion:</h3></div>
+                <div class="section-options">
+                    <div class="list-container">
+                        <ul class="filter-list">
                         <li class="location-option">
                             <label for="Garland County Library Bookstore">
-                                <input type="checkbox" value="Garland County Library Bookstore" v-model="filteredPurchaseLocation">Garland County Library Bookstore
+                                <input type="checkbox" value="Garland County Library Bookstore" v-model="filteredPurchaseLocation">Garland County Lib. Bookstore
                             </label>
                         </li>
 
                         <li class="location-option">
                             <label for="Ebay">
-                                <input type="checkbox" value="Ebay" v-model="filteredPurchaseLocation">Ebay
-                            </label>
+                            <input type="checkbox" value="Ebay" v-model="filteredPurchaseLocation">Ebay</label>
                         </li>
 
                         <li class="location-option">
@@ -27,20 +33,51 @@
 
                         <li class="location-option">
                             <label for="Barnes & Noble">
-                                <input type="checkbox" v-model="filteredPurchaseLocation" value="Barnes & Noble">Barnes & Noble
-                            </label>
-                        </li>
+                            <input type="checkbox" v-model="filteredPurchaseLocation" value="Barnes & Noble">Barnes & Noble
+                            </label></li>
 
                         <li class="location-option">
                             <label for="Gift">
-                                <input type="checkbox" value="Gift" v-model="filteredPurchaseLocation">Gift
+                            <input type="checkbox" value="Gift" v-model="filteredPurchaseLocation">Gift
                             </label>
                         </li>
                     </ul>
-                </div>  
-            <div class="searchbar">
-                <input type="text" placeholder="search books" name="search"  v-model="search"/>
-                <label for="search">search books</label>            
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="header-section" id="filter-section">
+                <div class="section-name"><h3>Genre:</h3></div>
+                <div class="section-options">
+                    <div class="list-container">
+                        <ul class="filter-list">
+                        <li class="option">
+                            <label for="Fiction">
+                                <input type="checkbox" value="Fiction" v-model="filteredGenre">Fiction
+                            </label>
+                        </li>
+
+                        <li class="option">
+                            <label for="Non-Fiction">
+                                <input type="checkbox" value="Non-Fiction" v-model="filteredGenre">Non-Fiction
+                            </label>
+                        </li>
+                    </ul>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="header-section" id="search-section">
+                <div class="searchbar">
+                    <input type="text" placeholder="search library" name="search"  v-model="this.search"/>
+                    <button for="search">search</button>            
+                </div>
+
             </div>
         </div>
 
@@ -83,7 +120,7 @@ export default {
             fullDetailsDisplay : false,
             coverDisplay : true,
             filteredPurchaseLocation : [],
-            filteredList : []
+            filteredGenre: []
         }
     },
     components: {
@@ -125,26 +162,19 @@ export default {
        
     },
     computed:{
-        searchList(){
-            this.filteredList == this.$store.state.books;
-             console.log("Line 133")
-             return this.filteredList.filter((book) => {
-                return book.includes.toLowerCase().includes(this.search.toLowerCase())
-             });
-        },
         filteredBooks(){
-            console.log("139")
             let newList = this.$store.state.books;
             if(this.search.length > 0){
                 return newList.filter( book => {
-                    return book.title.toLowerCase.indexOf(this.search.toLowerCase) != -1;
-                })
+                    return book.bookTitle.toLowerCase().indexOf(this.search.toLowerCase()) > -1  || 
+                    book.author.toLowerCase().indexOf(this.search.toLowerCase()) > -1
+                });
             }
-             else if(this.filteredPurchaseLocation.length <= 0){
-                console.log("Line 141");
+            else if(this.filteredGenre.length > 0){
+                return newList.filter(book => this.filteredGenre.includes(book.genre))
+            } else if(this.filteredPurchaseLocation.length <= 0){
                 return newList;
             } else {
-                console.log("Line 144");
                 return newList.filter(book => this.filteredPurchaseLocation.includes(book.purchaseLocation));
             }
         }
@@ -156,17 +186,66 @@ export default {
 
     .library-container{
         width: 100%;
+        height: 100vh;
     }
     .library-header{
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-evenly;
         align-items: center;
         margin-right: 10px;
         gap: 10px;
     }
 
-    .location-list{
+
+    .header-section{
+        display: flex;
+        flex-direction: row;
+        /* border: 3px solid black; */
+        width: auto;
+        height: 40px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .section-options{
+        margin-left: 10px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    button{
+        margin: 1px;
+        font-size: 12px;
+    }
+
+    ul{
+        display: block;
+        list-style-type: disc;
+        margin-block-start: 0em;
+        margin-block-end: 0em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        padding-inline-start: 0px;
+    }
+
+    li{
+        display: inline;
+        margin-right: 10px;
+    }
+
+    label{
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 12px;
+    }
+
+    input{
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .filter-list{
         list-style: none;
     }
 
@@ -188,7 +267,7 @@ export default {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-evenly;
-        margin: 1em 
+        margin: 1em;
     }
 
     .cover-card{
@@ -198,5 +277,15 @@ export default {
 
     button:hover{
         cursor: pointer;
+    }
+
+    h3{
+        display: block;
+        font-size: 1em;
+        margin-block-start: .1em;
+        margin-block-end: 0em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        font-weight: bold;
     }
 </style>

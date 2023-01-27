@@ -20,4 +20,8 @@ public interface StatisticsDao {
     Book mostExpensiveBook();
 
     List<Book> cheapestBooks();
+
+    int fictionCount();
+
+    int nonFictionCount();
 }
