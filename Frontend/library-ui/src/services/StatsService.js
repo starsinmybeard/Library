@@ -40,4 +40,8 @@ export default {
     cheapestBook(){
         return http.get('/Cheapest')
     },
+
+    pageCount(){
+        return http.get('/AvgPageCount')
+    },
 }

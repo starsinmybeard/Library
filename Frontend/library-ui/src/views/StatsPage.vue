@@ -17,7 +17,12 @@
 
     <div class="card">
       <div class="description"><h4>Average Book Price:</h4></div>
-      <div class="stat">$1{{ averageCost }}</div>
+      <div class="stat">${{ averageCost }}</div>
+    </div>
+
+    <div class="card">
+      <div class="description"><h4>Money Spent:</h4></div>
+      <div class="stat">${{ moneySpent }}</div>
     </div>
 
     <div class="card">
@@ -25,14 +30,16 @@
       <div class="stat">${{ moneySaved }}</div>
     </div>
 
+
+
     <div class="card">
       <div class="description"><h4>Most Expensive Book:</h4></div>
       <div class="stat">{{ mostExpensive }}</div>
     </div>
 
     <div class="card">
-      <div class="description"><h4>Number of Paper-Backs:</h4></div>
-      <div class="stat">{{ paperbackCount }}</div>
+      <div class="description"><h4>Average Page Count:</h4></div>
+      <div class="stat">{{ averagePageCount }}</div>
     </div>
 
 
@@ -113,7 +120,7 @@ export default {
 
     averagePrice(){
       StatsService.averagePrice().then((response) => {
-        this.averageCost = response.data / 100
+        this.averageCost = (response.data / 100)
       })
     },
     
@@ -123,9 +130,15 @@ export default {
       })
     },
 
+    totalMoneySpent(){
+      StatsService.moneySpent().then((response) => {
+        this.moneySpent = (response.data / 100) 
+      })
+    },
+
     priciestBook(){
       StatsService.priciestBook().then((response) => {
-        this.mostExpensive = (response.data[0].bookTitle);
+        this.mostExpensive = (response.data[0]);
       })
       
     },
@@ -133,6 +146,12 @@ export default {
     cheapestBook(){
       StatsService.moneySaved().then((response) => {
         this.moneySaved = (response.data / 100 * -1) 
+      })
+    },
+
+    pageCount(){
+      StatsService.pageCount().then((response) => {
+        this.averagePageCount = (response.data) 
       })
     },
     
@@ -145,6 +164,8 @@ export default {
     this.averagePrice();
     this.totalMoneySaved();
     this.priciestBook();
+    this.totalMoneySpent();
+    this.pageCount();
   }
 }
 </script>

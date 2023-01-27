@@ -17,6 +17,12 @@ public class Book {
     private String purchaseDate;
     private String readStatus;
     private String notes;
+    private String[] genres;
+    private int averageGoogleReview;
+    private int numOfGoogleReviews;
+    private String description;
+    private String publishedDate;
+    private String publisher;
 
 
     public Book(){
@@ -25,7 +31,8 @@ public class Book {
     public Book(int bookId, String bookTitle, String subtitle, String author, String genre,
                 String isbn, String condition, int price, int coverPrice, String format,
                 int pages, String purchaseLocation, String purchaseDate,
-                String readStatus, String notes) {
+                String readStatus, String notes, String[] genres, int averageGoogleReview, int numOfGoogleReviews,
+                String description, String publishedDate, String publisher) {
         this.bookId = bookId;
         this.bookTitle = bookTitle;
         this.subtitle = subtitle;
@@ -41,6 +48,12 @@ public class Book {
         this.purchaseDate = purchaseDate;
         this.readStatus = readStatus;
         this.notes = notes;
+        this.genres = genres;
+        this.averageGoogleReview = averageGoogleReview;
+        this.numOfGoogleReviews = numOfGoogleReviews;
+        this.description = description;
+        this.publishedDate = publishedDate;
+        this.publisher = publisher;
     }
 
 
@@ -158,5 +171,53 @@ public class Book {
 
     public void setPages(int pages) {
         this.pages = pages;
+    }
+
+    public String[] getGenres() {
+        return genres;
+    }
+
+    public void setGenres(String[] genres) {
+        this.genres = genres;
+    }
+
+    public int getAverageGoogleReview() {
+        return averageGoogleReview;
+    }
+
+    public void setAverageGoogleReview(int averageGoogleReview) {
+        this.averageGoogleReview = averageGoogleReview;
+    }
+
+    public int getNumOfGoogleReviews() {
+        return numOfGoogleReviews;
+    }
+
+    public void setNumOfGoogleReviews(int numOfGoogleReviews) {
+        this.numOfGoogleReviews = numOfGoogleReviews;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getPublishedDate() {
+        return publishedDate;
+    }
+
+    public void setPublishedDate(String publishedDate) {
+        this.publishedDate = publishedDate;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
     }
 }

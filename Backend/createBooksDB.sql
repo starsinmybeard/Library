@@ -63,8 +63,34 @@ delete from books where book_id = 27;
 
 --Add column to DB
 ALTER TABLE books
-ADD cover_price int; 
+ADD description varchar(4000); 
 
+ALTER TABLE books
+ADD genres varchar (3500);
+
+ALTER TABLE books
+ADD published_date varchar(30);
+
+ALTER TABLE books
+ADD google_average_rating int;
+
+ALTER TABLE books
+ADD google_number_of_ratings int;
+
+ALTER TABLE books
+ADD google_average_rating int;
+
+
+--SELECT BOOKS BY genre 
+select book_id, title, genre
+from books
+where genre != 'Non-Fiction' AND genre != 'Fiction'
+ORDER BY book_id DESC
+
+--Update GENRE
+UPDATE books 
+SET genre = 'Fiction'
+where genre != 'Non-Fiction' AND genre != 'Fiction'
 
 -- SUM 
 
@@ -86,3 +112,6 @@ SELECT *
 From books
 where price = (SELECT MIN(price) FROM books WHERE price > 0)
 
+update books set format = 'Paperback' where format = 'Softcover'
+select title, book_id, price, cover_price from books where book_id = 40
+select title, book_id, price, cover_price from books where book_id = 2

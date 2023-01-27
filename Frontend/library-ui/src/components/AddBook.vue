@@ -27,19 +27,6 @@
                     <select name="genre" v-model="book.genre">
                         <option value="Fiction">Fiction</option>
                         <option value="Non-Fiction">Non-Fiction</option>
-                        <option value="Classics">Classics</option>
-                        <option value="Humour">Humour</option>
-                        <option value="Sci-Fi">Sci-Fi</option>
-                        <option value="Fantasy">Fantast</option>
-                        <option value="Philosophy">Philosophy</option>
-                        <option value="Biography">Biography</option>
-                        <option value="History">History</option>
-                        <option value="Mystery">Mystery</option>
-                        <option value="Horror">Horror</option>
-                        <option value="Poetry">Poetry</option>
-                        <option value="Science">Science</option>
-                        <option value="Mythology">Mythology</option>
-                        <option value="Anthology">Anthology</option>
                     </select>
             </div>
 
@@ -111,6 +98,21 @@
                 <input type="text" v-model="book.isbn" @keyup="getDetailsFromOpenLibrary">
             </div> -->
 
+
+            <!-- <option value="Classics">Classics</option>
+                        <option value="Humour">Humour</option>
+                        <option value="Sci-Fi">Sci-Fi</option>
+                        <option value="Fantasy">Fantast</option>
+                        <option value="Philosophy">Philosophy</option>
+                        <option value="Biography">Biography</option>
+                        <option value="History">History</option>
+                        <option value="Mystery">Mystery</option>
+                        <option value="Horror">Horror</option>
+                        <option value="Poetry">Poetry</option>
+                        <option value="Science">Science</option>
+                        <option value="Mythology">Mythology</option>
+                        <option value="Anthology">Anthology</option> -->
+
             <div class="form-component">
                 <label for="read_status">Read status:</label>
                     <select name="read" v-model="book.readStatus">
@@ -157,10 +159,14 @@ export default {
                 purchaseDate:'',
                 readStatus:'',
                 notes:'',
-                pageCount:'',
+                pages:'',
                 edition: '',
-                publishDate:'',
+                publishedDate:'',
                 publisher:'',
+                genres:[],
+                averageGoogleReview: '',
+                numOfGoogleReviews: '',
+                description: '',
             },
             openLibraryBook: [],
             googleBook: [],
@@ -184,24 +190,21 @@ export default {
         ,
         fillForm(){
             this.book.bookTitle = this.googleBook.title;
+            if(this.googleBook.subtitle){
+                this.book.subtitle = this.googleBook.subtitle;
+            }
             this.book.author = this.googleBook.authors[0];
+            this.book.publisher = this.googleBook.publisher;
+            this.book.publishedDate = this.googleBook.publishedDate;
+            this.book.pages = this.googleBook.pageCount;
+            for (let index = 0; index < this.googleBook.categories.length; index++) {
+                this.book.genres.push(this.googleBook.categories[index]);
+            }
+            this.book.averageGoogleReview = this.googleBook.averageRating;
+            this.book.numOfGoogleReviews = this.googleBook.ratingsCount;
+            this.book.description = this.googleBook.description;
             console.log(this.book.isbn);
             console.log(this.googleBook.title);
-            
-            // OpenLibrary.getAuthorInfo(this.openLibraryBook.authors.key).then((response) => 
-            // this.authorInfo = response.data);
-
-
-            // this.book.bookTitle = this.openLibraryBook.title;
-            // this.book.author = this.openLibraryBook.author;
-            // this.book.coverPrice
-            // this.book.format
-            // this.book.purchaseLocation
-            // this.book.purchaseDate
-            // this.book.readStatus
-            // this.book.pageCount = this.openLibraryBook.number_of_pages;
-            // this.book.edition = this.openLibraryBook.edition_name;
-            // this.book.publishDate = this.openLibraryBook.publish_date;
         },
         convertPrice(){
             this.book.price = this.priceBeforeConversion * 100;
