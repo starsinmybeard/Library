@@ -1,11 +1,15 @@
 <template>
     <div class="library-container">
+
+
         <div class="library-header">
+
             <div class="header-section" id="display-section">
-                <div class="section-name"><h3>Display Options:</h3></div>
+                <div class="section-name"><h3>Display:</h3></div>
                 <div class="section-options">
-                    <button v-on:click="selectFullDetails()">Full Details Display</button>
-                    <button v-on:click="selectCoverDisplay()">Cover Display</button>
+                    <button v-on:click="selectCoverDisplay()">Covers</button>
+                    <button v-on:click="selectFullDetails()">List</button>
+                    
                 </div>
             </div>
 
@@ -14,70 +18,55 @@
                 <div class="section-options">
                     <div class="list-container">
                         <ul class="filter-list">
-                        <li class="location-option">
-                            <label for="Garland County Library Bookstore">
-                                <input type="checkbox" value="Garland County Library Bookstore" v-model="filteredPurchaseLocation">Garland County Lib. Bookstore
-                            </label>
-                        </li>
+                            <li class="location-option">
+                                <label for="Garland County Library Bookstore">
+                                    <input type="checkbox" value="Garland County Library Bookstore" v-model="filteredPurchaseLocation">Garland County Library
+                                </label>
+                            </li>
 
-                        <li class="location-option">
-                            <label for="Ebay">
-                            <input type="checkbox" value="Ebay" v-model="filteredPurchaseLocation">Ebay</label>
-                        </li>
+                            <li class="location-option">
+                                <label for="Ebay">
+                                <input type="checkbox" value="Ebay" v-model="filteredPurchaseLocation">Ebay</label>
+                            </li>
 
-                        <li class="location-option">
-                            <label for="Amazon">
-                                <input type="checkbox" value="Amazon" v-model="filteredPurchaseLocation">Amazon
-                            </label>
-                        </li>
+                            <li class="location-option">
+                                <label for="Amazon">
+                                    <input type="checkbox" value="Amazon" v-model="filteredPurchaseLocation">Amazon
+                                </label>
+                            </li>
 
-                        <li class="location-option">
-                            <label for="Barnes & Noble">
-                            <input type="checkbox" v-model="filteredPurchaseLocation" value="Barnes & Noble">Barnes & Noble
-                            </label></li>
+                            <li class="location-option">
+                                <label for="Barnes & Noble">
+                                <input type="checkbox" v-model="filteredPurchaseLocation" value="Barnes & Noble">Barnes & Noble
+                                </label>
+                            </li>
 
-                        <li class="location-option">
-                            <label for="Gift">
-                            <input type="checkbox" value="Gift" v-model="filteredPurchaseLocation">Gift
-                            </label>
-                        </li>
-                    </ul>
-
-                    </div>
-                </div>
-
-            </div>
+                            <li class="location-option">
+                                <label for="Gift">
+                                <input type="checkbox" value="Gift" v-model="filteredPurchaseLocation">Gift
+                                </label>
+                            </li>
+                        </ul
+                        ></div></div></div>
 
             <div class="header-section" id="filter-section">
                 <div class="section-name"><h3>Genre:</h3></div>
                 <div class="section-options">
                     <div class="list-container">
                         <ul class="filter-list">
-                        <li class="option">
-                            <label for="Fiction">
-                                <input type="checkbox" value="Fiction" v-model="filteredGenre">Fiction
-                            </label>
-                        </li>
-
-                        <li class="option">
-                            <label for="Non-Fiction">
-                                <input type="checkbox" value="Non-Fiction" v-model="filteredGenre">Non-Fiction
-                            </label>
-                        </li>
-                    </ul>
-
-                    </div>
-                </div>
-
-            </div>
-
+                            <li class="option">
+                                <label for="Fiction">
+                                <input type="checkbox" value="Fiction" v-model="filteredGenre">Fiction</label></li>
+                            <li class="option">
+                                <label for="Non-Fiction">
+                                <input type="checkbox" value="Non-Fiction" v-model="filteredGenre">Non-Fiction</label></li>
+                        </ul>
+                    </div></div></div>
 
             <div class="header-section" id="search-section">
                 <div class="searchbar">
                     <input type="text" placeholder="search library" name="search"  v-model="this.search"/>
-                    <button for="search">search</button>            
-                </div>
-
+                    <button for="search">search</button></div>
             </div>
         </div>
 
@@ -144,17 +133,11 @@ export default {
             BookService.getBook(bookId);
             this.$router.push({ name: "Book", params: {bookId} })
         },
-        filterBooksByPurchaseLocation(){
-
-        },
         filterBooksByPrice(){
-
         },
         filterBooksByCondition(){
-
         },
         filterBooksByGenre(){
-
         },
     },
     created(){

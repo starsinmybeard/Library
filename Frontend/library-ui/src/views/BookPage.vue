@@ -61,43 +61,42 @@
             <button v-on:click="editBook = !editBook">Edit Book</button>
             <button v-on:click="this.getDetailsFromOpenLibrary">See More Details</button>
           </div>
-
-        
         </div>
-        
-
         <div class="edit-book" v-if="editBook">
           <edit-book></edit-book>
         </div>
-
-        
-        
-
     </div> -->
     <div class="stats-page">
+
       <div class="cover-side">
         <img v-bind:src="`https://covers.openlibrary.org/b/isbn/${this.$store.state.book.isbn}-L.jpg`"/>
       </div>
 
       <div class="info-side">
         <div class="stats-card">
+          <div class="book-detail" id="title">
+            <h1>{{ this.$store.state.book.bookTitle }}</h1>
+            <h2 v-if="this.$store.state.book.subtitle">{{ this.$store.state.book.subtitle }}</h2>
+            <h6>by</h6>
+            <h2>{{ this.$store.state.book.author }}</h2>
+          </div>
 
-          <h1 class="title">
-            {{ this.$store.state.book.bookTitle }}
-          </h1>
 
-          <h2 class="subtitle" v-if="(this.$store.state.book.subtitle)">{{this.$store.state.book.subtitle}}</h2>
+          <div class="book-detail"></div>
+          <div class="book-detail"></div>
+          <div class="book-detail"></div>
+          <div class="book-detail"></div>
+          <div class="book-detail"></div>
+          <div class="book-detail"></div>
+          <div class="book-detail"></div>
+          <div class="book-detail"></div>
+          <div class="book-detail"></div>
     
           <h4>by:</h4>
           <h2 class="book-author">{{this.$store.state.book.author}}</h2>
           <h1>cover price</h1> <h3 class="price">{{this.$store.state.book.price /100}}</h3>
-
-
-
-        </div>
-        
+        </div> 
       </div>
-
     </div>
 
 
@@ -147,132 +146,16 @@
   }
   </script>
   
-  <style scoped> 
-
-  .book-card{
-    background: linear-gradient( rgb(255, 255, 255),  rgb(210, 205, 246),rgb(200, 192, 245), rgb(191, 182, 245), rgb(191, 182, 245));
-  }
-
-  
-    
-    /* .book-card{
-      width: 100%;
-      height: 100vh;
-      padding-top: 100px;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-      border: 50px solid purple;
-    }
-
-      .book-details{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        font-size: 18px;
-        height: auto;
-        width: 400px;
-        background-color: rgb(191, 182, 245);
-        border: 10px solid blue;
-        box-shadow: 1px 1px 40px 1px black;
-      }
-
-      .book-cover{
-        height: 520px;
-      }
-
-      .detail{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        height: auto;
-        padding-left: 14px;
-        background-color: rgb(191, 182, 245);
-        border: 1px solid yellow;
-      }
-
-      div > img{
-        text-align: center;
-        width: 340px;
-        height: 515px;
-        box-shadow: 1px 1px 40px 1px black;
-      }
-
-      .edit-book{
-        position: absolute;
-        background:  white;
-        border: 2px solid orange;
-        scale: 75%;
-      }
-
-      h5{
-        margin-right: 10px;
-        text-decoration: underline;
-      }
-
-      h4, h5, h6, h3{
-        background-color: rgb(191, 182, 245);
-        margin: 10px;
-      }
-
-      #edit-button{
+  <style scoped>      
+   .stats-page{
         width: 100%;
-        display: flex;
-        justify-content: center;
-        padding-left: 0px;
-      }
-
-      button{
-        color: black;
-        background-color: rgb(244, 244, 171);
-        border: 2px solid purple;
-        margin-right: 10px;
-        border-radius: 31px;
-        transition : 0ms;
-        transform: translateY(0);
+        height: 100%;
         display: flex;
         flex-direction: row;
-        align-items: center;
-        cursor: pointer;
-        
-      }
-
-      button:hover{
-        transition : 0ms;
-        padding: 10px 16px;
-        transform : translateY(-0px);
-        background-color: purple;
-        color: white;
-        border: solid 2px rgb(234, 234, 55);
-      }
-
-      #title.detail{
-        display: flex;
-        flex-direction: column;
-        padding-left: 0px;
-        align-items: center;
-      }
-
-      h1{
-        display: block;
-        font-size: 2em;
-        margin-block-start: 0em;
-        margin-block-end: 0em;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-        font-weight: bold;
-        border: 1px solid red;
-      } */
-
-
-
-      .stats-page{
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        flex-direction: row;
-        border: 2px solid black;
+        align-items: flex-start;
+        padding-top: 200px;
+        padding-bottom: 200px;
+        background: linear-gradient( rgb(255, 255, 255),  rgb(210, 205, 246),rgb(200, 192, 245), rgb(191, 182, 245), rgb(191, 182, 245));
       }
 
       .stats-page > div {
@@ -282,30 +165,56 @@
         align-items: center;
       }
 
-
       .cover-side{
-        border: 2px solid blue;
       }
 
       .info-side{
-        border: 2px solid red;
+       
       }
 
       .stats-card{
         display: flex;
         flex-direction: column;
-        width: 100%;
-        border: 1px solid yellow;
-
-        box-shadow: 1px 1px 40px 1px black;
+        width: 80%;
+        box-shadow: 1px 1px 20px 2px black;
+        background: inherit;
+        padding: 20px;
       }
 
-      .title{
-        text-align: center;
-        font-size: 4em;
-        border: 1px solid red;
+      .stats-card > div {
+        display: flex;
+        flex-direction: row;
+      }
 
+      #title{
+        flex-direction: column;
+        align-items: center;
+      }
+
+      h1{
+        text-align: center;
+        font-size: 3em;
         display: block;
+        margin-block-start: 0em;
+        margin-block-end: 0em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        font-weight: bold;
+      }
+
+      h2{
+        display: block;
+        font-size: 1.8em;
+        margin-block-start: 0em;
+        margin-block-end: 0em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        font-weight: bold;
+      }
+
+      h6{
+        display: block;
+        font-size: 1em;
         margin-block-start: 0em;
         margin-block-end: 0em;
         margin-inline-start: 0px;

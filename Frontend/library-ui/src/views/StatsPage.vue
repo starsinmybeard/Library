@@ -162,22 +162,22 @@ export default {
     .container{
       display: flex;
       flex-direction: row;
-      height: 100vh;
+      height: 100%;
       flex-wrap: wrap;
       justify-content: center;
       align-content: flex-start;
       align-items: center;
-      
+      padding-bottom: 100px;
     }
 
     .card{
       display: flex;
       flex-direction: column;
-      margin: 20px;
-      padding: 20px;
+      margin: 0px;
+      padding: 0px;
       align-items: center;
       height: 300px;
-      width: 400px;
+      width: 300px;
     }
 
     .description{
