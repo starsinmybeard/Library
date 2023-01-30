@@ -12,6 +12,14 @@
                 </div>
             </div>
 
+            <div class="header-section" id="display-section">
+                <div class="section-name"><h3>Sort:</h3></div>
+                <div class="section-options">
+                    <button v-on:click="selectCoverDisplay()">Title (A-Z)</button>
+                    <button v-on:click="selectFullDetails()">Author (A-z)</button>
+                </div>
+            </div>
+
             <div class="header-section" id="filter-location">
                 <div class="section-name"><h3>Filters:</h3></div>
                 <div class="section-options">

@@ -28,7 +28,7 @@
 
     <div class="card">
       <div class="description"><h4>Money Saved buying used:</h4></div>
-      <div class="stat">${{ moneySaved }}</div>
+      <div class="stat">${{ moneySaved * -1 }} </div>
     </div>
 
     <div class="card">
@@ -167,7 +167,9 @@ export default {
       justify-content: center;
       align-content: flex-start;
       align-items: center;
+      margin-top: 20px;
       padding-bottom: 100px;
+      background: linear-gradient( #ffffff,#dcceec, #dcceec, #c5b0e1 ,#c3a9e4, #ceb7eb, #c3a7e9);
     }
 
     .card{

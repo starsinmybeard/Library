@@ -20,7 +20,6 @@ export default {
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap');
-
     .app{
       font-family: 'Coming Soon', cursive;
       display: flex;
@@ -32,7 +31,6 @@ export default {
     body{
       margin: 0px;
     }
-    
 </style>
 
 
