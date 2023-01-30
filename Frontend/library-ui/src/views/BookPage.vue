@@ -76,25 +76,42 @@
         <div class="stats-card">
           <div class="book-detail" id="title">
             <h1>{{ this.$store.state.book.bookTitle }}</h1>
-            <h2 v-if="this.$store.state.book.subtitle">{{ this.$store.state.book.subtitle }}</h2>
-            <h6>by</h6>
-            <h2>{{ this.$store.state.book.author }}</h2>
+              <h2 v-if="this.$store.state.book.subtitle">{{ this.$store.state.book.subtitle }}</h2>
+                <h6>by</h6>
+                  <h2>{{ this.$store.state.book.author }}</h2>
           </div>
 
+          <div class="book-detail">
+            <h3>Pages:</h3>
+            <h2> &nbsp;{{ this.$store.state.book.pages}}</h2>
+          </div>
 
+          <div class="book-detail">
+            <h3>Purchase Price:</h3>
+            <h2> &nbsp;${{ this.$store.state.book.price /100}}</h2>
+          </div>
+
+          <div class="book-detail">
+            <h3>Price on cover:</h3>
+            <h2> &nbsp;${{ this.$store.state.book.coverPrice /100}}</h2>
+          </div>
+
+          <div class="book-detail">
+            <h3>Place of purchase:</h3>
+            <h2> &nbsp;{{ this.$store.state.book.purchaseLocation}}</h2>
+          </div>
+
+          <div class="book-detail">
+            <h3>isbn:</h3>
+            <h2> &nbsp;{{ this.$store.state.book.isbn}}</h2>
+          </div>
+          
           <div class="book-detail"></div>
           <div class="book-detail"></div>
           <div class="book-detail"></div>
           <div class="book-detail"></div>
           <div class="book-detail"></div>
           <div class="book-detail"></div>
-          <div class="book-detail"></div>
-          <div class="book-detail"></div>
-          <div class="book-detail"></div>
-    
-          <h4>by:</h4>
-          <h2 class="book-author">{{this.$store.state.book.author}}</h2>
-          <h1>cover price</h1> <h3 class="price">{{this.$store.state.book.price /100}}</h3>
         </div> 
       </div>
     </div>
@@ -153,9 +170,10 @@
         display: flex;
         flex-direction: row;
         align-items: flex-start;
-        padding-top: 200px;
+        margin-top: 10px;
+        padding-top: 100px;
         padding-bottom: 200px;
-        background: linear-gradient( rgb(255, 255, 255),  rgb(210, 205, 246),rgb(200, 192, 245), rgb(191, 182, 245), rgb(191, 182, 245));
+        background: linear-gradient( #ffffff, #e9e5ef, #ccbbe3 ,#c3a9e4, #ceb7eb, #c3a7e9);
       }
 
       .stats-page > div {
@@ -184,6 +202,7 @@
       .stats-card > div {
         display: flex;
         flex-direction: row;
+        align-items: center;
       }
 
       #title{
@@ -204,7 +223,7 @@
 
       h2{
         display: block;
-        font-size: 1.8em;
+        font-size: 1.6em;
         margin-block-start: 0em;
         margin-block-end: 0em;
         margin-inline-start: 0px;
@@ -243,6 +262,18 @@
         height: 515px;
         box-shadow: 1px 1px 40px 1px black;
       }
+
+      .edit-book{
+        position: absolute;
+        flex-wrap: wrap;
+        height: auto;
+        background-color: white;
+        margin-top: 20px;
+        padding: 20px;
+        border: 12px solid black;
+        backdrop-filter: blur(500px);
+      }
+      
 
       
 

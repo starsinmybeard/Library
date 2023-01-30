@@ -1,4 +1,5 @@
 <template>
+  <div class="container">
     <div class="add-book-form">
         <form action="submit">
             <div class="form-component" id="isbn_container">
@@ -62,8 +63,8 @@
             </div>
 
             <div class="form-component">
-                <label for="price">Price:</label>
-                <input type="text" list="price" v-model.number="priceBeforeConversion">
+                <label for="price">Purchase Price:</label>
+                <input type="text" list="price" v-model.number="priceBeforeConversion" placeholder="$">
                     <datalist id="price">
                         <option value=".25">.25</option>
                         <option value=".50">.50</option>
@@ -75,7 +76,7 @@
 
             <div class="form-component">
                 <label for="coverPrice">Price on Back Cover:</label>
-                <input type="text" list="coverPrice" v-model.number="coverPriceBeforeConversion">
+                <input type="text" list="coverPrice" v-model.number="coverPriceBeforeConversion" placeholder="$">
             </div>
 
             <div class="form-component">
@@ -126,13 +127,18 @@
                 <textarea name="notes" cols="60" rows="10" v-model="book.notes" placeholder="add notes here if you wish!"></textarea>
             </div>
 
-            <div class="submit-button">
-                <button v-on:click.prevent="convertPrice(), addBookToDB()">submit</button>
-            </div>
-
             
         </form>
     </div>
+
+    <div class="button-section">
+        <div class="form-component">
+                <div class="submit-button">
+                <button v-on:click.prevent="convertPrice(), addBookToDB()" id="enter">Add Book To Database</button>
+                </div>
+        </div>
+    </div>
+  </div>    
 </template>
 
 <script>
@@ -219,15 +225,31 @@ export default {
 </script>
 
 <style scoped>
+
+    .container{
+        display: flex;
+        background: linear-gradient( #ffffff, #c9c8f5, #b7b6f6 ,#afaefb, #9998f9, #8987f7);
+        margin-top: 20px;
+    }
+    
     .add-book-form{
         display: flex;
         justify-content: center;
+        width: 100%;
+        padding-top: 40px;
+    }
+
+    form{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        align-content: flex-start;
     }
 
     #isbn_container{
         display: flex;
         flex-direction: column;
-        margin-bottom: 10px;
     }
 
     #callbutton{
@@ -236,7 +258,8 @@ export default {
     }
 
     div.form-component {
-        margin-top: 10px;
+        margin: 10px;
+        
     }
     div.form-component > label {
         display: block;
@@ -245,7 +268,10 @@ export default {
     button{
         width:100px;
         text-align: center;
-        padding: 3px;
+        padding: 1px;
+        background-color:rgb(234, 234, 55);
+        font: inherit;
+        font-size: 14px;
     }
 
     .submit-button{
@@ -254,7 +280,27 @@ export default {
         margin-bottom: 20px;
         justify-content: center;
         padding: 10px;
+    }
 
+    .button-section{
+        height: 30%;
+    }
+
+    #enter{
+        width: 220px;
+        height: 80px;
+        box-shadow: 1px 1px 1px 1px rgb(0, 0, 0);
+        font: inherit;
+        font-size: 1.2em;
+        color: black;
+        background-color: rgb(234, 234, 55);
+        border-radius: 8px;
+    }
+
+    button:hover{
+        scale: 120%;
+        box-shadow: 0px 5px 10px 2px rgb(0, 0, 0);
+        cursor: pointer;
     }
     
 

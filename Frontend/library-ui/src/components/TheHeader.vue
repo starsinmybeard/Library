@@ -57,16 +57,10 @@ export default {
         flex-direction: row;
         justify-content: space-between;
         width: 100%;
-        padding: 15px;
-        height: 11%;
         
+        box-shadow: 1px 1px 5px 1px #000000;
     }
-    .logo{
-        display: flex;
-        width: 20%;
-        border: 10px dotted magenta;
-        justify-content: center;
-    }
+    
     .links{
         width: 100%;
         display: flex;
@@ -74,18 +68,16 @@ export default {
         justify-content: space-evenly;
         align-items: center;
         text-align: center;
-        
     }
     .link{
         display: flex;
         background-color: rgb(234, 234, 55);
-        border: 3px solid purple;
         width: 50vw;
         height: 100%;    
         justify-content: center;
         align-items: center;
         text-decoration: none;
-        font-size: 30px;
+        font-size: 30px;    
     }
 
     .img-container{

@@ -23,16 +23,16 @@ export default {
 
     .app{
       font-family: 'Coming Soon', cursive;
-      margin-left: 20px;
-      margin-top: 20px;
-      margin-right: 20px;
-      margin-bottom: 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      height: 100%;
-      background: linear-gradient( rgb(255, 255, 255),  rgb(210, 205, 246),rgb(200, 192, 245), rgb(191, 182, 245), rgb(191, 182, 245));
+      height: 100vh;
     }
+
+    body{
+      margin: 0px;
+    }
+    
 </style>
 
 
