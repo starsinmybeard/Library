@@ -161,7 +161,7 @@ export default {
             else if(this.filteredGenre.length > 0){
                 return newList.filter(book => this.filteredGenre.includes(book.genre))
             } else if(this.filteredPurchaseLocation.length <= 0){
-                return newList;
+                return newList.sort((a, b) => a.bookTitle.localeCompare(b.bookTitle));
             } else {
                 return newList.filter(book => this.filteredPurchaseLocation.includes(book.purchaseLocation));
             }
