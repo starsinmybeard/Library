@@ -15,8 +15,8 @@
             <div class="header-section" id="display-section">
                 <div class="section-name"><h3>Sort:</h3></div>
                 <div class="section-options">
-                    <button v-on:click="selectCoverDisplay()">Title (A-Z)</button>
-                    <button v-on:click="selectFullDetails()">Title (Z-A)</button>
+                    <button v-on:click="sortBooks(1)">Title (A-Z)</button>
+                    <button v-on:click="sortBooks(2)">Title (Z-A)</button>
                 </div>
             </div>
 
@@ -77,7 +77,7 @@
 
         <div class="cover-display" v-if="coverDisplay">
             <book-cover-card 
-                v-for="book in filteredBooks" 
+                v-for="book in sortedBooks" 
                 v-bind:key="book.bookId" 
                 :isbn="book.isbn" 
                 class="cover-card"
@@ -113,8 +113,8 @@ export default {
             search:'',
             fullDetailsDisplay : false,
             coverDisplay : true,
-            atoZ: true,
-            ZtoA: false,
+            aToZ: false,
+            zToA: false,
             filteredPurchaseLocation : [],
             filteredGenre: []
         }
@@ -140,6 +140,17 @@ export default {
             BookService.getBook(bookId);
             this.$router.push({ name: "Book", params: {bookId} })
         },
+
+
+        sortBooks(sorter){
+            if(sorter == 1){
+                this.zToA = false;
+                this.aToZ = true;
+            } else if(sorter == 2){
+                this.aToZ = false;
+                this.zToA = true;
+            }
+        },
         filterBooksByPrice(){
         },
         filterBooksByCondition(){
@@ -148,8 +159,7 @@ export default {
         },
     },
     created(){
-        this.getBooksFromDB();
-       
+        this.getBooksFromDB();    
     },
     computed:{
         filteredBooks(){
@@ -163,10 +173,19 @@ export default {
             else if(this.filteredGenre.length > 0){
                 return newList.filter(book => this.filteredGenre.includes(book.genre))
             } else if(this.filteredPurchaseLocation.length <= 0){
-                return newList.sort((a, b) => a.bookTitle.localeCompare(b.bookTitle));
+                return newList;
             } else {
                 return newList.filter(book => this.filteredPurchaseLocation.includes(book.purchaseLocation));
             }
+        },
+        sortedBooks(){
+            let sortedList = this.filteredBooks;
+            if(this.aToZ == true){
+                return  sortedList.sort((a, b) => a.bookTitle.localeCompare(b.bookTitle));
+            } else if(this.zToA == true){
+                return sortedList.sort((a, b) => b.bookTitle.localeCompare(a.bookTitle));
+            }
+            return sortedList;
         }
     }
 }

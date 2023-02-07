@@ -164,7 +164,6 @@ public class JdbcStatisticsDao implements StatisticsDao {
                         " WHERE genre = 'Fiction'; ";
         int number = jdbcTemplate.queryForObject(sql, Integer.class);
         return number;
-
     }
 
     @Override
