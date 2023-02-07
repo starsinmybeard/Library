@@ -82,7 +82,7 @@ public class JdbcBooksDao implements BookDao {
     public void updateBook(Book book){
         String sql =
                 " UPDATE books" +
-                        " set title = ?, " +
+                        " SET title = ?, " +
                         " subtitle = ?, " +
                         " author = ?, " +
                         " genre = ?, " +
@@ -101,7 +101,7 @@ public class JdbcBooksDao implements BookDao {
                         " google_number_of_ratings = ?, " +
                         " description = ?, " +
                         " published_date = ?, " +
-                        " publisher = ?, " +
+                        " publisher = ? " +
                         " WHERE book_id = ?; ";
 
         Boolean readStatusBoolean;
@@ -110,7 +110,7 @@ public class JdbcBooksDao implements BookDao {
                 book.getCondition(), book.getPrice(), book.getCoverPrice(),
                 book.getFormat(), book.getPages(), book.getPurchaseLocation(), book.getPurchaseDate(),
                 Boolean.parseBoolean(book.getReadStatus()), book.getNotes(), genreArrayToString(book.getGenres()), book.getAverageGoogleReview(),
-                book.getNumOfGoogleReviews(), book.getDescription(), book.getPublishedDate(), book.getPublisher());
+                book.getNumOfGoogleReviews(), book.getDescription(), book.getPublishedDate(), book.getPublisher(), book.getBookId());
     };
 
 

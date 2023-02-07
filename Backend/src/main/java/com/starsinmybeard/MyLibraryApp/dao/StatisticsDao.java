@@ -18,10 +18,9 @@ public interface StatisticsDao {
     int dayOfMostBuys();
     int numPurchasedFromLocation(String purchaseLocation);
     Book mostExpensiveBook();
-
     List<Book> cheapestBooks();
-
     int fictionCount();
-
     int nonFictionCount();
+    Book longestBook();
+    Book shortestBook();
 }

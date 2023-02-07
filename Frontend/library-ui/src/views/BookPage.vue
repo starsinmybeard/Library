@@ -135,7 +135,7 @@
             book:[],
             openLibraryBook: [],
             openLibraryAuthor:[],
-            editBook : false,
+            editBook : true,
         }
         
       },

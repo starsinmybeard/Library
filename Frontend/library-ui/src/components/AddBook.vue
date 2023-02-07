@@ -84,7 +84,7 @@
                 <select id="location" v-model="book.format">
                     <option value="">--format--</option>
                     <option value="Hardcover">Hardcover</option>
-                    <option value="Softcover">Paperback</option>
+                    <option value="Paperback">Paperback</option>
                 </select>
             </div>
 

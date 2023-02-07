@@ -16,7 +16,7 @@
                 <div class="section-name"><h3>Sort:</h3></div>
                 <div class="section-options">
                     <button v-on:click="selectCoverDisplay()">Title (A-Z)</button>
-                    <button v-on:click="selectFullDetails()">Author (A-z)</button>
+                    <button v-on:click="selectFullDetails()">Title (Z-A)</button>
                 </div>
             </div>
 
@@ -113,6 +113,8 @@ export default {
             search:'',
             fullDetailsDisplay : false,
             coverDisplay : true,
+            atoZ: true,
+            ZtoA: false,
             filteredPurchaseLocation : [],
             filteredGenre: []
         }

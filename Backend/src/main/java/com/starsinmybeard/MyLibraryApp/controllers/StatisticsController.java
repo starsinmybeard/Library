@@ -75,5 +75,15 @@ public class StatisticsController {
         return this.statisticsDao.nonFictionCount();
     };
 
+    @RequestMapping(path = "/stats/LongestBook", method = RequestMethod.GET)
+    public Book longestBook() {
+        return this.statisticsDao.longestBook();
+    };
+
+    @RequestMapping(path = "/stats/ShortestBook", method = RequestMethod.GET)
+    public Book shortestBook() {
+        return this.statisticsDao.shortestBook();
+    };
+
 
 }

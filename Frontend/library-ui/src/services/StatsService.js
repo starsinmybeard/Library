@@ -51,5 +51,13 @@ export default {
 
     nonFictionCount(){
         return http.get('/NonFictionCount')
-    }
+    }, 
+    
+    longestBook(){
+        return http.get('/LongestBook')
+    },
+
+    shortestBook(){
+        return http.get('/ShortestBook')
+    },
 }

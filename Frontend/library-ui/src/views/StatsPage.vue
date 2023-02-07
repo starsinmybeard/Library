@@ -32,7 +32,7 @@
     </div>
 
     <div class="card">
-      <div class="description"><h4>Most Expensive Book:</h4></div>
+      <div class="description"><h4>Most Expensive Purchase:</h4></div>
       <div class="stat" id="most_expensive">{{ mostExpensive }}</div>
     </div>
 
@@ -51,6 +51,16 @@
     <div class="card">
       <div class="description"><h4>Non-Fiction Books:</h4></div>
       <div class="stat">{{ nonFictionCount }}</div>
+    </div>
+
+    <div class="card">
+      <div class="description"><h4>Longest Book:</h4></div>
+      <div class="stat" id="longest">{{ longestBookName }}</div>
+    </div>
+
+    <div class="card">
+      <div class="description"><h4>Shortest Book:</h4></div>
+      <div class="stat" id="shortest">{{ shortestBookName }}</div>
     </div>
 
   </div>
@@ -73,6 +83,10 @@ export default {
       totalFromGenre:'',
       daysWithMostBuys:'',
       mostExpensive: '',
+      fictionCount: '',
+      nonFictionCount: '',
+      longestBookName: '',
+      shortestBookName:''
     }
   }, 
   methods:{
@@ -140,6 +154,18 @@ export default {
         this.nonFictionCount = (response.data) 
       })
     },
+
+    longestBook(){
+      StatsService.longestBook().then((response) => {
+        this.longestBookName = (response.data.bookTitle);
+      })
+    },
+
+    shortestBook(){
+      StatsService.shortestBook().then((response) => {
+        this.shortestBookName = (response.data.bookTitle);
+      })
+    },
     
 
   }, 
@@ -154,6 +180,8 @@ export default {
     this.pageCount();
     this.totalFiction();
     this.totalNonFiction();
+    this.longestBook();
+    this.shortestBook();
   }
 }
 </script>
@@ -201,7 +229,15 @@ export default {
     #most_expensive{
       font-size: 2em;
       overflow: scroll;
+    }  
+
+    #shortest, #longest{
+      font-size: 2em;
     }
+
+    
+
+    
 
     
 

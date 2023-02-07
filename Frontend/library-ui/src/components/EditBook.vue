@@ -118,6 +118,8 @@
                 <textarea name="notes" cols="60" rows="10" v-model="book.notes" placeholder="add notes here if you wish!"></textarea>
             </div>
 
+            <button v-on:click.prevent="getGoogleApi()">get google info</button>
+            <button v-on:click.prevent="fillForm()">add google info</button>
             <button v-on:click.prevent="convertPrice(), editBook()">submit</button>
         </form>
     </div>
@@ -125,6 +127,7 @@
 
 <script>
 import BookService from '@/services/BookService';
+import GoogleBooksService from '@/services/GoogleBooksService';
 // import OpenLibrary from '@/services/OpenLibrary';
 export default {
     name:"add-book",
@@ -146,8 +149,17 @@ export default {
                 purchaseLocation:'',
                 purchaseDate:'',
                 readStatus:'',
-                notes:''
+                notes:'',
+                pages:'',
+                edition: '',
+                publishedDate:'',
+                publisher:'',
+                genres:[],
+                averageGoogleReview: '',
+                numOfGoogleReviews: '',
+                description: '',
             },
+            googleBook: {},
             openLibraryBook: []
         }
     },
@@ -155,12 +167,30 @@ export default {
         "title"
     ],
     methods:{ 
+        getGoogleApi(){
+            GoogleBooksService.getBookDetails(this.book.isbn).then((response) => 
+            this.googleBook = (response.data.items[0].volumeInfo));
+        },
+        fillForm(){
+            if(this.googleBook.subtitle){
+                this.book.subtitle = this.googleBook.subtitle;
+            }
+            this.book.publisher = this.googleBook.publisher;
+            this.book.publishedDate = this.googleBook.publishedDate;
+            this.book.pages = this.googleBook.pageCount;
+            for (let index = 0; index < this.googleBook.categories.length; index++) {
+                this.book.genres.push(this.googleBook.categories[index]);
+            }
+            this.book.averageGoogleReview = this.googleBook.averageRating;
+            this.book.numOfGoogleReviews = this.googleBook.ratingsCount;
+            this.book.description = this.googleBook.description;
+            console.log(this.book.isbn);
+            console.log(this.googleBook.title);
+        },
         populateBook(){
             this.book = this.$store.state.book;
             this.priceBeforeConversion = this.$store.state.book.price / 100;
             this.coverPriceBeforeConversion = this.$store.state.book.coverPrice /100;
-
-            
         },
         // getDetailsFromOpenLibrary(){
         //   console.log("line 50");

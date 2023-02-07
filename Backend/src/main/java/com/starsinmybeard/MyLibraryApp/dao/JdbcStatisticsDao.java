@@ -60,12 +60,14 @@ public class JdbcStatisticsDao implements StatisticsDao {
     public int moneySaved(){
         String moneySpent=
                 " SELECT SUM(price) " +
-                " FROM books; ";
+                " FROM books " +
+                " WHERE condition != 'New'; ";
         int totalSpent = jdbcTemplate.queryForObject(moneySpent, Integer.class);
 
         String coverPrice =
                 " SELECT SUM(cover_price) " +
-                " FROM books; ";
+                " FROM books " +
+                " WHERE condition != 'New'; ";
         int totalCoverPrice = jdbcTemplate.queryForObject(coverPrice, Integer.class);
         return totalCoverPrice - totalSpent;
     }
@@ -175,6 +177,35 @@ public class JdbcStatisticsDao implements StatisticsDao {
         return number;
     }
 
+    @Override
+    public Book longestBook(){
+        Book longest = new Book();
+        String sql =
+                " SELECT * " +
+                " FROM books " +
+                " WHERE pages = (SELECT MAX(pages) FROM books WHERE pages != 0); ";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
+        while (rowSet.next()){
+            Book result = mapRowToBook(rowSet);
+            longest = result;
+        }
+        return longest;
+    }
+
+    @Override
+    public Book shortestBook(){
+        Book shortest = new Book();
+        String sql =
+                " SELECT * " +
+                " FROM books " +
+                " WHERE pages = (SELECT MIN(pages) FROM books WHERE pages != 0); ";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
+        while (rowSet.next()){
+            Book result = mapRowToBook(rowSet);
+            shortest = result;
+        }
+        return shortest;
+    }
 
 
 
