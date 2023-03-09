@@ -219,11 +219,12 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 160px;
+      height: 180px;
       width: 120px;
       font-size: 2.6em;
       padding: 15px;
       text-align: center;
+      overflow: auto;
     }
 
     #most_expensive{
@@ -236,11 +237,6 @@ export default {
     }
 
     
-
-    
-
-    
-
 
 
 </style>

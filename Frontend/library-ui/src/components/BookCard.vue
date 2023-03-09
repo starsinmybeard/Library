@@ -38,7 +38,7 @@
       data(){
         return{
             formattedPurchasePrice:"",
-            formattedCoverPrice:""
+            formattedCoverPrice:"",
         }
       },
       props:[

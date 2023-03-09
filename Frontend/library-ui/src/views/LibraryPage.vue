@@ -141,7 +141,6 @@ export default {
             this.$router.push({ name: "Book", params: {bookId} })
         },
 
-
         sortBooks(sorter){
             if(sorter == 1){
                 this.zToA = false;
